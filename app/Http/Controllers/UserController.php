@@ -25,13 +25,10 @@ class UserController extends Controller
         }
         if ($r->ajax()) 
         {
-            $data = User::join('roles', 'users.role_id', 'roles.id')
-                ->leftJoin('positions', 'users.position_id', 'positions.id')
-                ->leftJoin('departments', 'users.department_id', 'departments.id')
-                ->leftJoin('hospitals', 'users.hospital_id', 'hospitals.id')
+            $data = User::leftjoin('roles', 'users.role_id', 'roles.id')
                 ->where('users.active', 1)
                 ->where('users.username', '!=', 'root')
-                ->select('users.*', 'roles.name as rname', 'departments.name as dname', 'hospitals.name as hname', 'positions.name as pname');
+                ->select('users.*', 'roles.name as rname', 'positions.name as pname');
             return Datatables::of($data)
                 ->addColumn('check', function($row){
                     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
@@ -59,16 +56,7 @@ class UserController extends Controller
         $data['roles'] = DB::table('roles')
             ->where('active', 1)
             ->get();
-        $data['departments'] = DB::table('departments')
-            ->where('active', 1)
-            ->get();
-        $data['hospitals'] = DB::table('hospitals')
-            ->where('active', 1)
-            ->get();
-        $data['positions'] = DB::table('positions')
-            ->where('active', 1)
-            ->get();
-        return view("users.index", $data);
+        return view("user.index", $data);
     }
    
     public function save(Request $r)
@@ -134,7 +122,7 @@ class UserController extends Controller
             ->where('users.id', $id)
             ->select('users.*', 'roles.name as rname')
             ->first();
-        return view("users.profile", $data);
+        return view("user.profile", $data);
     }
     public function save_profile(Request $r)
     {
