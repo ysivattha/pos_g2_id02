@@ -12,9 +12,6 @@ class CategController extends Controller
     public function index()
     {
  
-
-     
-        
         if (request()->ajax()) 
         {
             $data = \DB::table('sto_category')
@@ -25,16 +22,6 @@ class CategController extends Controller
 
 
             return datatables()->of($data)
-                // ->addColumn('check', function($row){
-                //     $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
-                //     return $input;
-                // })
-                // ->addColumn('photo', function($row){
-                //     $url = asset($row->photo);
-                //     $img = "<img src='{$url}' width='27'>";
-                //     return $img;
-                // })
-
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $btn = btn_actions($row->id, 'sto_category', 'sto_category');
