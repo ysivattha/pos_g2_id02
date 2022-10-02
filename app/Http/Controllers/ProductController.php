@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Validator,Redirect,Response,File;
+
 
 class ProductController extends Controller
 {
@@ -67,7 +71,17 @@ class ProductController extends Controller
                 ->make(true);
             }
 
-            return view('product.index');
+            $data['units'] = \DB::table('sto_unit')
+            ->where('is_active',1)->get();
+
+            $data['categories'] = \DB::table('sto_category')
+            ->where('is_active',1)->get();
+
+            $data['incomes'] = \DB::table('acc_income_type')
+            ->where('is_active',1)->get();
+
+
+            return view('product.index',$data);
     }
 
     /**
@@ -78,6 +92,8 @@ class ProductController extends Controller
     public function create()
     {
         //
+
+
     }
 
     /**
@@ -88,8 +104,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $tbl = $request->tbl;
+        $per = $request->per;
+        $input = $request->except('_token', 'per', 'tbl','image');
+        if($request->image)
+        {
+            $input['image'] = $request->file('image')->store('uploads/products', 'custom');
+
+           
+        }
+       
+      
+
+   
+        $input['user'] = Auth::user()->id;
+        $input['is_active'] = 1;
+        $input['datetime']=now();
+       
+        $i = \DB::table($tbl)->insert($input);
+        return (int)$i;
+        
+
     }
+    
+
 
     /**
      * Display the specified resource.

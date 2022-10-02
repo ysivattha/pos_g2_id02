@@ -258,10 +258,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('stockout', 'StockOutController@index')->name('stockout.index');
   //unit
   Route::get('unit', 'UnitController@index')->name('unit.index');
+  Route::post('unit', 'UnitController@store')->name('unit.store');
   //stock adjust
   Route::get('adjust', 'AdjustController@index')->name('adjust.index');
+  Route::post('adjust', 'AdjustController@store')->name('adjust.store');
   //stock balance
   Route::get('stock-balance', 'StockBalanceController@index')->name('balance.index');
+  Route::POST('stock-balance', 'StockBalanceController@store')->name('balance.store');
   // type customer
   Route::get('type-customer', 'TypeCustomerController@index')->name('type.index');
   //customer
@@ -277,7 +280,9 @@ Route::group(['middleware' => 'auth'], function () {
  Route::post('stockout', 'StockOutController@store')->name('stockout.store');
 
  Route::get('/product', [ProductController::class,'index'])->name('product.index');
+ Route::post('/product', [ProductController::class,'store'])->name('product.store');
  Route::get('/cat', [CategController::class,'index'])->name('cat.index');
+ Route::post('/cat', [CategController::class,'store'])->name('cat.store');
 
 });
 

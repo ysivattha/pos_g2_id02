@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class StockBalanceController extends Controller
 {
@@ -32,6 +33,38 @@ class StockBalanceController extends Controller
             })->make(true);
         }
         
-        return view('stock_balance.index');
+        $data['items']= \DB::table('sto_item')
+        ->where('is_active',1)->get();
+        
+        return view('stock_balance.index',$data);
+    }
+
+    public function store(Request $r)
+    {
+        $per = $r->per;
+        $tbl = $r->tbl;
+
+        $data = Validator::make($r->all(), [
+            'item_id' => 'required',
+
+            
+
+        ]);
+     
+        if ($data->passes()) {
+
+                 // if(!check($per, 'i')){
+        //     return 0;
+        // }
+    
+        $data = $r->except('_token', 'per', 'tbl');
+        $data['user_id'] = Auth::user()->id;
+        $data['is_active'] = 1;
+        $data['datetime']=now();
+        $i = DB::table($tbl)->insert($data);
+            return (int)$i;
+        }
+
+        return -1;
     }
 }

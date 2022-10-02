@@ -4,8 +4,10 @@
 @endsection
 @section('header')
     {{__('lb.item')}}
+    
 @endsection
 @section('content')  
+<link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
     <div class="toolbox pt-1 pb-1">
         @cancreate('item')
         <button class="btn btn-success btn-sm" data-toggle='modal' data-target='#createModal'>
@@ -51,11 +53,190 @@
             </table>
         </div>
     </div>
+
+    {{-- modal create  --}}
+    <div class="modal fade " id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+        <form method="POST" id='create_form'  enctype="multipart/form-data"  action="{{ route('product.store') }}">
+            @csrf
+    
+            <input type="hidden" name="tbl" value="sto_item">
+            <input type="hidden" name="per" value="sto_item">
+            <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <strong class="modal-title">{{ __('lb.create_stock_out') }}</strong>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div id="sms">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group mb-2">
+                        
+                                <label for="date">
+                                    {{__('lb.date')}} <span class="text-danger">*</span>
+                                </label>
+                            
+                                <input type="date"  name="date" id="date" class="form-control input-xs" required>
+                            
+                            </div>
+
+                            <div class="form-group mb-2">
+                        
+                                <label for="barcode">
+                                    {{__('lb.barcode')}} <span class="text-danger">*</span>
+                                </label>
+                            
+                                <input type="text"  name="barcode" id="barcode" class="form-control input-xs" required>
+                            
+                            </div>
+
+                            <div class="form-group mb-2">
+                        
+                                <label for="ref_name">
+                                    {{__('lb.ref_name')}} <span class="text-danger">*</span>
+                                </label>
+                            
+                                <input type="text"  name="ref_name" id="ref_name" class="form-control input-xs" required>
+                            
+                            </div>
+
+                            <div class="form-group mb-2">
+                        
+                                <label for="product_name">
+                                    {{__('lb.product_name')}} <span class="text-danger">*</span>
+                                </label>
+                            
+                                <input type="text"  name="product_name" id="product_name" class="form-control input-xs" required>
+                            
+                            </div>
+
+                     
+
+                                  <div class="form-group mb-2">
+                
+                                        <label  for="cost">
+                                            {{__('lb.cost')}} <span class="text-danger">*</span>
+                                        </label>                           
+                                        <input type="number" min="0"  step="any" name="cost" id="cost" class="form-control input-xs" required>
+                                        
+                                    </div>
+
+                                    <div class="form-group mb-2">
+                        
+                                        <label  for="price">
+                                            {{__('lb.price')}}  <span class="text-danger">*</span>
+                                        </label>
+                                
+                                    
+                                        <input type="number" min="0"  step="any" name="price" class="form-control input-xs" required>
+                                    
+                                    </div>
+
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group mb-2">
+                    
+                                <label  for="unit">
+                                    {{__('lb.unit')}} 
+                                </label>
+
+                                <select name="unit" id="unit" class="chosen-select">
+                                    <option value="">{{__('lb.select_one')}}</option>
+                               
+                                    @foreach ($units as $u)
+                                    <option  value="{{ $u->id }}">{{ $u->unit }}</option>
+                                    @endforeach
+                                </select>
+    
+                            </div>
+
+                            <div class="form-group mb-2">
+                    
+                                <label  for="category">
+                                    {{__('lb.category')}} 
+                                </label>
+
+                                <select name="category" id="category" class="chosen-select">
+                                    <option value="">{{__('lb.select_one')}}</option>
+                               
+                                    @foreach ($categories as $cat)
+                                    <option  value="{{ $cat->id }}">{{ $cat->category }}</option>
+                                    @endforeach
+                                </select>
+    
+                            </div>
+
+                            <div class="form-group mb-2">
+                    
+                                <label  for="income">
+                                    {{__('lb.income')}} 
+                                </label>
+
+                                <select name="income_type_id" id="income_type_id" class="chosen-select">
+                                    <option value="">{{__('lb.select_one')}}</option>
+                                    <option  value="123">123</option>
+                                    @foreach ($incomes as $in)
+                                    <option  value="{{ $in->id }}">{{ $in->in_type }}</option>
+                                    @endforeach
+                                </select>
+    
+                            </div>
+
+                            
+                            <div class="form-group mb-2">
+                    
+                                <label  for="note">
+                                    {{__('lb.note')}} 
+                                </label>
+                        
+                                <input type="note"  name="note" id="note" class="form-control input-xs" >
+                               
+       
+                            </div>
+
+                            <div class="form-group mb-2">
+                    
+                                <label  for="image">
+                                    {{__('lb.image')}} 
+                                </label>
+                               
+                                    <input type="file"  name="image" id="image" >
+                                
+                             
+                               
+       
+                            </div>
+
+
+                        </div>
+                    </div>      
+           
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" >
+                        <i class="fa fa-save"></i> {{__('lb.save')}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" 
+                        onclick="reset('#create_form')">
+                        <i class="fa fa-times"></i> {{__('lb.close')}}
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
           
 @endsection
-
 @section('js')
-
 <script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 	<script>
         $(document).ready(function () {
@@ -63,6 +244,7 @@
             $("#menu_stock>a").addClass("active");
             $("#menu_stock").addClass("menu-open");
             $("#menu_item").addClass("myactive");
+            $(".chosen-select").chosen({width: "100%"});
             $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -106,20 +288,58 @@
                         
                     });
         });
-        // function edit(id, obj)
-        // {
-        //     $('#esms').html('');
-        //     let tbl = $(obj).attr('table');
-        //     $.ajax({
-        //         type: 'GET',
-        //         url: burl + '/bulk/get/' + id + '?tbl=' + tbl,
-        //         success: function(sms)
-        //         {
-        //             let data = JSON.parse(sms);
-        //             $('#eid').val(data.id);
-        //             $('#ename').val(data.name);
-        //         }
-        //     });
-        // }
+
+        $("#create_form").submit(function(e) {
+    e.preventDefault(); // prevent actual form submit
+    let formData = new FormData(this);
+ 
+
+    $.ajax({
+         type: "POST",
+         url: "{{route('product.store')}}",
+         
+         data: formData, // serializes form input
+         cache:false,
+        contentType: false,
+        processData: false,
+         success: function(sms){
+           console.log(sms);
+            if(sms>0)
+            {
+                let txt = `<div class='alert alert-success p-2' role='alert'>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    <div>
+                        Data has been saved successfully!
+                    </div>
+                </div>`;
+                $('#sms').html(txt);
+                $("#create_form")[0].reset();
+                $('#stock_in_table').DataTable().ajax.reload();
+                // update all chosen select
+                $('#create_form .chosen-select').trigger("chosen:updated");
+                setTimeout(function() { 
+                    $('#createModal').modal('hide');
+                    $('#sms').html("");
+                }, 500);
+       
+            }
+            else{
+                let txt = `<div class='alert alert-danger p-2' role='alert'>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    <div>
+                        Fail to save data, please check again!
+                    </div>
+                </div>
+                `;
+                $('#sms').html(txt);
+            }
+        }
+    });
+});
+      
     </script>
 @endsection

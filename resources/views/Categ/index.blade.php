@@ -7,7 +7,7 @@
 @endsection
 @section('content')  
     <div class="toolbox pt-1 pb-1">
-        {{-- @cancreate('item')
+        @cancreate('item')
         <button class="btn btn-success btn-sm" data-toggle='modal' data-target='#createModal'>
             <i class="fa fa-plus-circle"></i> {{__('lb.create')}}
         </button>
@@ -17,7 +17,7 @@
             table='roles' permission='role' token="{{csrf_token()}}">
             <i class="fa fa-trash"></i> {{__('lb.delete')}}
         </button>
-        @endcandelete --}}
+        @endcandelete
     </div>   
     <div class="card">
         <div class="card-body">
@@ -42,6 +42,55 @@
                 </thead>
               
             </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <form  method="POST" id='create_form'  action="{{ route('cat.store') }}">
+              @csrf
+              <input type="hidden" name="tbl" value="sto_category">
+              <input type="hidden" name="per" value="sto_category">
+              <div class="modal-content">
+                <div class="modal-header bg-success">
+                    <strong class="modal-title">{{__('lb.create_category')}}</strong>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                  <div class="modal-body">
+                    <div id="sms">
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3" for="category">
+                            {{__('lb.category')}} <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="category" id="category" class="form-control input-xs" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label class="col-md-3" for="note">
+                            {{__('lb.note')}} 
+                        </label>
+                        <div class="col-md-9">
+                            <input type="text" name="note" id="note" class="form-control input-xs" >
+                        </div>
+                    </div>
+                     
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fa fa-save"></i> {{__('lb.save')}}
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" 
+                        onclick="reset('#create_form')">
+                        <i class="fa fa-times"></i> {{__('lb.close')}}
+                    </button>
+                  </div>
+              </div>
+          </form>
         </div>
     </div>
           
@@ -94,6 +143,53 @@
                         
                     });
         });
+
+    $("#create_form").submit(function(e) {
+    e.preventDefault(); // prevent actual form submit
+    var form = $(this);
+    var url = form.attr('action'); //get submit url [replace url here if desired]
+    $.ajax({
+         type: "POST",
+         url: url,
+         data: form.serialize(), // serializes form input
+         success: function(sms){
+            console.log(sms);
+            if(sms>0)
+            {
+                let txt = `<div class='alert alert-success p-2' role='alert'>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    <div>
+                        Data has been saved successfully!
+                    </div>
+                </div>`;
+                $('#sms').html(txt);
+                $("#create_form")[0].reset();
+                $('#dataTable').DataTable().ajax.reload();
+                // update all chosen select
+                $('#create_form .chosen-select').trigger("chosen:updated");
+                setTimeout(function() { 
+                    $('#createModal').modal('hide');
+                    $('#sms').html("");
+                }, 500);
+       
+            }
+            else{
+                let txt = `<div class='alert alert-danger p-2' role='alert'>
+                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    <div>
+                        Fail to save data, please check again!
+                    </div>
+                </div>
+                `;
+                $('#sms').html(txt);
+            }
+        }
+    });
+});
         // function edit(id, obj)
         // {
         //     $('#esms').html('');
