@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.category')}}
+    {{__('lb.users')}}
 @endsection
 @section('header')
     {{__('lb.category')}}
