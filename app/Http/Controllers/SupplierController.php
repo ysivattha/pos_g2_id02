@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
+
 class SupplierController extends Controller
 {
     
@@ -32,7 +33,27 @@ class SupplierController extends Controller
                 return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $supplier->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $supplier->id .')"><i class="fa fa-trash"></i> Delete</a>';
             })->make(true);
         }
+
+        $data['sup_type']= \DB::table('sup_supplier_type')
+        ->where('is_active',1)->get();
         
-        return view('supplier.index');
+        return view('supplier.index',$data);
+    }
+
+    public function store(Request $r)
+    {
+        $tbl = $r->tbl;
+        $per = $r->per;
+        $data = $r->except('_token', 'per', 'tbl',);
+        
+      
+
+   
+        $data['user_id'] = Auth::user()->id;
+        $data['is_active'] = 1;
+        $data['datetime']=now();
+       
+        $i = \DB::table($tbl)->insert($data);
+        return (int)$i;
     }
 }
