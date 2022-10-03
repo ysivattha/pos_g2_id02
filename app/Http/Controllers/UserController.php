@@ -14,7 +14,8 @@ class UserController extends Controller
         {
             $data = \DB::table('users')
             ->where('users.is_active',1)
-            ->select('users.*')
+            ->leftjoin('roles','users.role_id','roles.id') 
+            ->select('users.*', 'users.first_name as fname', 'users.last_name as lname', 'users.last_name as lname', 'roles.name as rname')
             ->get();
 
 

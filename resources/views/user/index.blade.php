@@ -3,7 +3,7 @@
     {{__('lb.users')}}
 @endsection
 @section('header')
-    {{__('lb.category')}}
+    {{__('lb.users')}}
 @endsection
 @section('content')  
     <div class="toolbox pt-1 pb-1">
@@ -23,21 +23,17 @@
         <div class="card-body">
             @component('coms.alert')
             @endcomponent
-            <table class="table table-sm table-bordered datatable" id='dataTable' style="width: 100%">
+            <table class="table table-sm table-bordered datatable" id='DataTable' style="width: 100%">
                 <thead class="bg-light">
                     <tr>
                         {{-- <th>
                             <input type="checkbox" onclick="check(this)" value="off">
                         </th> --}}
-                       
-                        <th>{{__('lb.id')}}</th>
-                        <th>{{__('lb.category')}}</th>
-                        {{-- <th>{{__('lb.image')}}</th> --}}
-                        <th>{{__('lb.note')}}</th>
-                        <th>{{__('lb.user')}}</th>
-                        <th>{{__('lb.action')}}</th>
-
-
+                        <th>No.</th>
+                        <th>Username</th>
+                        <th>Full_Name</th>
+                        <th>Role</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
               
@@ -62,25 +58,25 @@
         }
         });
 
-			var table = $('#dataTable').DataTable({
+			var table = $('#DataTable').DataTable({
                 pageLength: 50,
                 processing: true,
                 serverSide: true,
                 // scrollX: true,
                 ajax: {
-                    url: "{{ route('cat.index') }}",
+                    url: "{{ route('user.index') }}",
                     type: 'GET'
                 },
                 columns: [
                     {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
-                    {data: 'category', name: 'category'},
-                    {data: 'note', name: 'note'},
+                    {data: 'username' , name: 'username'},
                     {
                         data: "fname",
                         render: function (data, type, row) {
                         return row.fname + ' ' + row.lname ;
                         }
                     },
+                    {data: 'rname', name: 'rname'},
                     {
                         data: 'action', 
                         name: 'action', 
