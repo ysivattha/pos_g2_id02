@@ -96,7 +96,7 @@
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
-                            <ul class="nav nav-treeview" id='security_collapse'>
+                            <ul class="nav nav-treeview" id='stock_collapse'>
                                 
                                 <li class="nav-item">
                                     <a href="{{ route('product.index') }}" class="nav-link" id="menu_item">
@@ -150,7 +150,7 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item has-treeview" id='menu_security'>
+                        <li class="nav-item has-treeview" id='customer_security'>
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
@@ -181,7 +181,7 @@
                         </li>
 
                         <li class="nav-item" >
-                            <a href="#" class="nav-link" id="menu_home">
+                            <a href="#" class="nav-link" id="menu_sale">
                             <i class="nav-icon fas fa-angle-double-right "></i>
                             <p>
                                ផ្នែកលក់ {{-- {{__('lb.dashboard')}} --}}
@@ -189,7 +189,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item has-treeview" id='menu_security'>
+                        <li class="nav-item has-treeview" id='menu_supplier'>
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-friends"></i>
                             <p>
@@ -197,17 +197,17 @@
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
-                            <ul class="nav nav-treeview" id='security_collapse'>
+                            <ul class="nav nav-treeview" id='supplier_collapse'>
                                 
                                 <li class="nav-item">
-                                    <a href="{{ route('supplier.index') }}" class="nav-link" id="menu_user">
+                                    <a href="{{ route('supplier.index') }}" class="nav-link" id="menu_supplier">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Supplier {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="{{ route('supplier-type.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('supplier-type.index') }}" class="nav-link" id='menu_type_supplier'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Supplier {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -220,7 +220,7 @@
                         </li>
 
                         <li class="nav-item" >
-                            <a href="#" class="nav-link" id="menu_home">
+                            <a href="#" class="nav-link" id="menu_stock_in">
                             <i class="nav-icon fas fa-angle-double-right "></i>
                             <p>
                                ផ្នែនទិញចូល {{-- {{__('lb.dashboard')}} --}}
@@ -228,7 +228,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item has-treeview" id='menu_security'>
+                        <li class="nav-item has-treeview" id='menu_account'>
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-dollar-sign"></i>
                             <p>
@@ -236,23 +236,23 @@
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
-                            <ul class="nav nav-treeview" id='security_collapse'>
+                            <ul class="nav nav-treeview" id='account_collapse'>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_income">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Income {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_cost">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Cost of goods sold {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_expense'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Expense {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -260,14 +260,14 @@
                              
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_ap">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       AP - Account Payable
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_ar'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        AR - Account Receivable     {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -275,7 +275,7 @@
                              
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_type_expense'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Expense {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -283,14 +283,14 @@
                                 
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_type_method">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       Type Method
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_asset'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Asset List     {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -298,7 +298,7 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item has-treeview" id='menu_security'>
+                        <li class="nav-item has-treeview" id='menu_hr'>
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-angle-double-right"></i>
                             <p>
@@ -308,21 +308,21 @@
                             </a>
                             <ul class="nav nav-treeview" id='security_collapse'>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_employee">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Employee List {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_payroll">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Payroll {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_sex'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Sex {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -330,14 +330,14 @@
                              
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_position">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       Position
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_department'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Department    {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -345,7 +345,7 @@
                                 
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_training'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Training {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -353,55 +353,55 @@
                                 
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id="menu_user">
+                                    <a href="#" class="nav-link" id="menu_course">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                       Training Course
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_absent'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Absent    {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_figure'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Figure Scan    {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_attach'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Attach File    {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_type_attach'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Attach    {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_status'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Status    {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_type_pay'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Pay    {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link" id='menu_role'>
+                                    <a href="#" class="nav-link" id='menu_type_absent'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Absent    {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -446,7 +446,7 @@
                          
                              
                                 <li class="nav-item">
-                                    <a href="" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('role.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                         {{__('lb.roles')}}
                                     </a>

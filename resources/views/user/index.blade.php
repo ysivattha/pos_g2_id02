@@ -49,9 +49,10 @@
 	<script>
         $(document).ready(function () {
             $("#sidebar li a").removeClass("active");
-            $("#menu_stock>a").addClass("active");
-            $("#menu_stock").addClass("menu-open");
-            $("#menu_cat").addClass("myactive");
+            $("#menu_security>a").addClass("active");
+            $("#menu_security").addClass("menu-open");
+            $("#menu_user").addClass("myactive");
+            $(".chosen-select").chosen({width: "100%"});
             $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
