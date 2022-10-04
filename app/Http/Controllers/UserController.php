@@ -9,7 +9,6 @@ class UserController extends Controller
 {
     public function index()
     {
- 
         if (request()->ajax()) 
         {
             $data = \DB::table('users')
@@ -18,19 +17,26 @@ class UserController extends Controller
             ->select('users.*', 'users.first_name as fname', 'users.last_name as lname', 'users.last_name as lname', 'roles.name as rname')
             ->get();
 
-
             return datatables()->of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $btn = btn_actions($row->id, 'users', 'users');
                     return $btn;
                 })
-                
                 ->rawColumns(['action'])
                 ->make(true);
             }
-
             return view('user.index');
+    }
+    public function profile()
+    {
+        $id = Auth::user()->id;
+        $data['user'] = DB::table("users")
+            ->leftjoin('roles', 'users.role_id', 'roles.id')
+            ->where('users.id', $id)
+            ->select('users.*', 'roles.name as rname')
+            ->first();
+        return view("user.profile", $data);
     }
 
     
