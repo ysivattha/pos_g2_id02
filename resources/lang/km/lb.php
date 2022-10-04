@@ -1,8 +1,20 @@
 <?php
 
 return [
-
+    // left menu
     'dashboard' => 'ទំព័រមុខ',
+    'leftmenu_dashboard' => 'ទំព័រមុខ',
+    'cms_system' => 'ប្រព័ន្ធគ្រប់គ្រង',
+    'leftmenu_stock' => 'ឃ្លាំងទំនិញ',
+    'leftmenu_customer' => 'អតិថិជន',
+    'leftmenu_sale' => 'ផ្នែកលក់',
+    'leftmenu_supplier' => 'អ្នកផ្គត់ផ្គង់',
+    'leftmenu_purchase' => 'ផ្នែកទិញចូល',
+    'leftmenu_account' => 'គណនេយ្យ',
+    'leftmenu_hr' => 'ធនធានមនុស្ស',
+    'leftmenu_report' => 'របាយការណ៍',
+    'leftmenu_setting' => 'ការកំណត់',
+    //
     'home' => 'ទំព័រមុខ',
     'create' => 'បង្កើតថ្មី',
     'delete' => 'លុប',

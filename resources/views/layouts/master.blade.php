@@ -68,7 +68,7 @@
             <!-- Brand Logo -->
             <a href="{{url('/')}}" class="brand-link">
             <img src="{{asset('img/logo.png')}}" alt="" class="brand-image img-circle elevation-3">
-            <span class="brand-text font-weight-bold">CMS System</span>
+            <span class="brand-text font-weight-bold">{{__('lb.cms_system')}}</span>
             </a>
 
             <!-- Sidebar -->
@@ -92,7 +92,7 @@
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-warehouse"></i>
                             <p>
-                                ឃ្លាំងទំនិញ{{-- {{__('lb.security')}} --}}
+                                {{__('lb.leftmenu_stock')}}
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
@@ -150,11 +150,11 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item has-treeview" id='customer_security'>
+                        <li class="nav-item has-treeview" id='menu_customer'>
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                អតិថិជន{{-- {{__('lb.security')}} --}}
+                                {{__('lb.leftmenu_customer')}}
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
@@ -184,7 +184,7 @@
                             <a href="#" class="nav-link" id="menu_sale">
                             <i class="nav-icon fas fa-angle-double-right "></i>
                             <p>
-                               ផ្នែកលក់ {{-- {{__('lb.dashboard')}} --}}
+                                {{__('lb.leftmenu_sale')}}
                             </p>
                             </a>
                         </li>
@@ -193,7 +193,7 @@
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-friends"></i>
                             <p>
-                                អ្នកផ្គត់ផ្គង់{{-- {{__('lb.security')}} --}}
+                                {{__('lb.leftmenu_supplier')}}
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
@@ -223,7 +223,7 @@
                             <a href="#" class="nav-link" id="menu_stock_in">
                             <i class="nav-icon fas fa-angle-double-right "></i>
                             <p>
-                               ផ្នែកទិញចូល {{-- {{__('lb.dashboard')}} --}}
+                                {{__('lb.leftmenu_purchase')}}
                             </p>
                             </a>
                         </li>
@@ -232,7 +232,7 @@
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-dollar-sign"></i>
                             <p>
-                                គណនេយ្យ{{-- {{__('lb.security')}} --}}
+                                {{__('lb.leftmenu_account')}}
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
@@ -302,7 +302,7 @@
                             <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-angle-double-right"></i>
                             <p>
-                                ធនធានមនុស្ស{{-- {{__('lb.security')}} --}}
+                                {{__('lb.leftmenu_hr')}}
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                             </a>
@@ -413,7 +413,7 @@
                             <a href="#" class="nav-link" id="menu_home">
                             <i class="nav-icon fas fa-angle-double-right "></i>
                             <p>
-                               របាយការណ៍ {{-- {{__('lb.dashboard')}} --}}
+                               {{__('lb.leftmenu_report')}}
                             </p>
                             </a>
                         </li>
@@ -422,7 +422,7 @@
                             <a href="#" class="nav-link" id="menu_home">
                             <i class="nav-icon fas fa-cog "></i>
                             <p>
-                               ការកំណត់ {{-- {{__('lb.dashboard')}} --}}
+                                {{__('lb.leftmenu_setting')}}
                             </p>
                             </a>
                         </li>
