@@ -223,7 +223,7 @@
                             <a href="#" class="nav-link" id="menu_stock_in">
                             <i class="nav-icon fas fa-angle-double-right "></i>
                             <p>
-                               ផ្នែនទិញចូល {{-- {{__('lb.dashboard')}} --}}
+                               ផ្នែកទិញចូល {{-- {{__('lb.dashboard')}} --}}
                             </p>
                             </a>
                         </li>
@@ -413,7 +413,7 @@
                             <a href="#" class="nav-link" id="menu_home">
                             <i class="nav-icon fas fa-angle-double-right "></i>
                             <p>
-                               រផាយការណ៍ {{-- {{__('lb.dashboard')}} --}}
+                               របាយការណ៍ {{-- {{__('lb.dashboard')}} --}}
                             </p>
                             </a>
                         </li>
@@ -443,8 +443,6 @@
                                         {{__('lb.users')}}
                                     </a>
                                 </li>
-                         
-                             
                                 <li class="nav-item">
                                     <a href="{{ route('role.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
