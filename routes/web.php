@@ -267,14 +267,18 @@ Route::group(['middleware' => 'auth'], function () {
   Route::POST('stock-balance', 'StockBalanceController@store')->name('balance.store');
   // type customer
   Route::get('type-customer', 'TypeCustomerController@index')->name('type.index');
+  Route::POST('type-customer', 'TypeCustomerController@store')->name('type.store');
   //customer
   Route::get('customer', 'CustomerController@index')->name('customer.index');
+  Route::POST('customer', 'CustomerController@store')->name('cus.store');
   //category
   Route::get('category',[CategoryController::class,'index'])->name('category.index');
  //supplier_ type
  Route::get('supplier-type', 'SupplierTypeController@index')->name('supplier-type.index');
+ Route::POST('supplier-type', 'SupplierTypeController@store')->name('sup-type.store');
  //supplier
  Route::get('supplier', 'SupplierController@index')->name('supplier.index');
+ Route::POST('supplier', 'SupplierController@store')->name('supplier.store');
 
  Route::post('stockin', 'StockInController@store')->name('stockin.store');
  Route::post('stockout', 'StockOutController@store')->name('stockout.store');
