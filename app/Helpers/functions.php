@@ -32,7 +32,7 @@ function btn_actions($id, $tbl, $per)
 {
     $del = '';
     $edit = '';
-    $del = "<button type='button' onclick='remove({$id}, this)' table='{$tbl}' per='{$per}' 
+    $del = "<button type='button'  onclick='removeD({$id}, this)' table='{$tbl}' per='{$per}' 
     class='btn btn-danger btn-xs' title='Delete'>
     <i class='fa fa-trash'></i>
     </button>";

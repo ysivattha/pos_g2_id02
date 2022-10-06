@@ -65,4 +65,11 @@ class CategController extends Controller
 
         return -1;
     }
+
+    public function delete($id)
+    {
+        $cat = \DB::table('sto_category')->where('id',$id)->update(['is_active'=>0]);
+    
+        return $cat;
+    }
 }

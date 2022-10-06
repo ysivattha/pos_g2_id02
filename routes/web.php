@@ -287,6 +287,7 @@ Route::group(['middleware' => 'auth'], function () {
  Route::post('/product', [ProductController::class,'store'])->name('product.store');
  Route::get('/cat', [CategController::class,'index'])->name('cat.index');
  Route::post('/cat', [CategController::class,'store'])->name('cat.store');
+ Route::get('/cat/delete/{id}', [CategController::class,'delete'])->name('cat.delete');
 
 });
 
