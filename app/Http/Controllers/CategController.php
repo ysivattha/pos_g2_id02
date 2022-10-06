@@ -66,10 +66,20 @@ class CategController extends Controller
         return -1;
     }
 
+
     public function delete($id)
     {
         $cat = \DB::table('sto_category')->where('id',$id)->update(['is_active'=>0]);
     
         return $cat;
+
+    // public function delete($id)
+    // {
+    //     $i = DB::table('sto_category')->where('id', $id)->update(["is_active"=>0]);
+        
+    //     return redirect()->route('Categ.index')
+    //         ->with('success', config('app.del_success'));
+
+    // }
     }
 }

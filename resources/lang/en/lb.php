@@ -1,8 +1,20 @@
 <?php
 
 return [
-
+    // left menu
     'dashboard' => 'Dashboard',
+    'leftmenu_dashboard' => 'Dashboard',
+    'cms_system' => 'CMS System',
+    'leftmenu_stock' => 'Stock',
+    'leftmenu_customer' => 'Customer',
+    'leftmenu_sale' => 'Sale',
+    'leftmenu_supplier' => 'Supplier',
+    'leftmenu_purchase' => 'Purchase',
+    'leftmenu_account' => 'Account',
+    'leftmenu_hr' => 'HR',
+    'leftmenu_report' => 'Report',
+    'leftmenu_setting' => 'Setting',
+    //
     'home' => 'Home',
     'create' => 'Create',
     'delete' => 'Delete',

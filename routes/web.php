@@ -43,8 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('company', 'CompanyController@index');
   Route::get('company/edit/{id}', 'CompanyController@edit');
   Route::post('company/save', 'CompanyController@save');
-  // // category
-  // Route::get('category', 'CategoryController@index')->name('category.index');
+
   // position
   Route::get('position', 'PositionController@index')->name('position.index');
   // protocol

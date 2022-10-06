@@ -61,10 +61,9 @@
                     <small>{{__('lb.old_pass')}}</small>
                 </div>
             </div>
+
             <div class="col-sm-1"></div>
             <div class="col-sm-5">
-                
-                
                 
                 <div class="form-group mb-1">
                     <label >{{__('lb.role')}} : {{$user->rname}}</label>
@@ -77,6 +76,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -90,10 +90,6 @@
             $("#menu_security").addClass("menu-open");
             $("#menu_user").addClass("myactive");
         });
-        function preview(e)
-        {
-            var img = document.getElementById('img');
-            img.src = URL.createObjectURL(e.target.files[0]);
-        }
+        
     </script>
 @endsection

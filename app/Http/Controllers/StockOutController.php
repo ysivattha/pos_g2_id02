@@ -22,9 +22,9 @@ class StockOutController extends Controller
     {
         if (request()->ajax()) {
             $stock = DB::table('sto_stock_out')
-            ->join('users','sto_stock_out.user','users.id')
-            ->join('cus_customer','sto_stock_out.customer_id','customer.id')
-            ->select('sto_stock_out.*','cus_customer.contact_name','users.username')
+            ->leftjoin('users','sto_stock_out.seller_id','users.id')
+            ->leftjoin('cus_customer','sto_stock_out.customer_id','cus_customer.id')
+            ->select('sto_stock_out.*','cus_customer.contact_name','users.first_name as fname')
             ->get();
             return datatables()->of($stock)
             ->addIndexColumn()
@@ -45,43 +45,5 @@ class StockOutController extends Controller
         return view('stockout.index',$data);
     }
 
-    public function store(Request $r)
-    {
-        $per = $r->per;
-        $tbl = $r->tbl;
-
-        $data = Validator::make($r->all(), [
-            'date'=>'required',
-            'customer'=>'required',
-            'amount' => 'required',
-            'discount' => 'required',
-            'total' => 'required',
-            'tax'=>'required',
-            'total_with_tax'=>'required',
-            'seller'=>'required',
-            'paid'=>'required',
-            'exchange_rate'=>'required',
-            'amount_khr'=>'required'
-            
-
-        ]);
-
-        if ($data->passes()) {
-
-            // if(!check($per, 'i')){
-   //     return 0;
-   // }
-
-            $data = $r->except('_token', 'per', 'tbl');
-            $data['user'] = Auth::user()->id;
-            $data['is_active'] = 1;
-            $data['datetime']=now();
-         
-            $i = DB::table($tbl)->insert($data);
-                return (int)$i;
-            }
-
-            return -1;
-
-    }
+    
 }
