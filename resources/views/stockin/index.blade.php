@@ -31,7 +31,7 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="stock_in_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="DataTable">
             <thead>
                 <tr>
                     <th>#</th>
@@ -57,191 +57,7 @@
 	</div>
 
     
-
 </div>
-
-@section('modal')
-    <div class="modal fade " id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
-        <div class="modal-dialog " role="document">
-        <form method="POST" id='create_form'  action="{{ route('stockin.store') }}" >
-            @csrf
-    
-            <input type="hidden" name="tbl" value="sto_stock_in">
-            <input type="hidden" name="per" value="sto_stock_in">
-            <div class="modal-content">
-                <div class="modal-header bg-success">
-                    <strong class="modal-title">{{ __('lb.create_stock_out') }}</strong>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-
-                    <div id="sms">
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group mb-2">
-                        
-                                <label for="supplier">
-                                    {{__('lb.supplier')}} <span class="text-danger">*</span>
-                                </label>
-                            
-                                <select name="supplier" id="supplier" class="chosen-select">
-                                    <option value="">{{__('lb.select_one')}}</option>
-                                    <option value="1">123</option>
-                                    @foreach($suppliers as $sup)
-                                    <option value="{{ $sup->id }}">{{ $s->contact_name }}</option>
-                                    @endforeach
-                                </select>
-                            
-                            </div>
-                
-
-                                  <div class="form-group mb-2">
-                
-                                        <label  for="amount">
-                                            {{__('lb.amount')}} <span class="text-danger">*</span>
-                                        </label>                           
-                                        <input type="number" min="0"  step="any" name="amount" id="amount" class="form-control input-xs" required>
-                                        
-                                    </div>
-
-                                    <div class="form-group mb-2">
-                        
-                                        <label  for="discount">
-                                            {{__('lb.discount')}}  <span class="text-danger">*</span>
-                                        </label>
-                                
-                                    
-                                        <input type="number" min="0"  step="any" name="discount" class="form-control input-xs">
-                                    
-                                    </div>
-
-                                                        
-                                    <div class="form-group mb-2">
-                                        
-                                            <label  for="total">
-                                                {{__('lb.total')}} 
-                                            </label>
-                                    
-                                      
-                                            <input type="number" min="0"  step="any" name="total" id="total" class="form-control input-xs" required>
-                                        
-                                    </div>
-
-                                    <div class="form-group mb-2">
-                    
-                                        <label  for="tax">
-                                            {{__('lb.tax')}} 
-                                        </label>
-                                
-                                      
-                                            <input type="number" min="0"  step="any" name="tax"  id="tax" class="form-control input-xs" required>
-                                        
-                
-                                    </div>
-
-                                    <div class="form-group mb-2">
-                    
-                                        <label  for="total_with_tax">
-                                            {{__('lb.total_with_tax')}} 
-                                        </label>
-                                
-                                        
-                                            <input type="number" min="0"  step="any" name="total_with_tax" id="total_with_tax" class="form-control input-xs" required>
-                                       
-                
-                                    </div>
-
-
-
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="form-group mb-2">
-                    
-                                <label  for="seller">
-                                    {{__('lb.seller')}} 
-                                </label>
-
-                                <select name="seller" id="seller" class="chosen-select">
-                                    <option value="">{{__('lb.select_one')}}</option>
-                                    <option value="1">123</option>
-                                    @foreach ($emps as $emp)
-                                    <option  value="{{ $emp->id }}">{{ $emp->name_kh }}--{{ $emp->name_en }}</option>
-                                    @endforeach
-                                </select>
-                        
-                               
-                                  
-                               
-       
-                            </div>
-
-                            
-    
-               
-
-                            <div class="form-group mb-2">
-                    
-                                    <label  for="paid">
-                                        {{__('lb.paid')}} 
-                                    </label>
-                            
-                                    
-                                        <input type="number"  name="paid" id="paid" class="form-control input-xs" required>
-                                    
-
-                            </div>
-
-                            <div class="form-group mb-2">
-                    
-                                <label  for="rest">
-                                    {{__('lb.rest')}} 
-                                </label>
-                        
-                                
-                                    <input type="number"  name="rest" id="rest" class="form-control input-xs" >
-                                
-        
-                            </div>
-
-                            <div class="form-group mb-2">
-                    
-                                <label  for="note">
-                                    {{__('lb.note')}} 
-                                </label>
-                        
-                               
-                                    <input type="text"  name="note" id="note" class="form-control input-xs" >
-                               
-       
-                            </div>
-
-
-
-                        </div>
-                    </div>      
-           
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm" >
-                        <i class="fa fa-save"></i> {{__('lb.save')}}
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" 
-                        onclick="reset('#create_form')">
-                        <i class="fa fa-times"></i> {{__('lb.close')}}
-                    </button>
-                </div>
-            </div>
-        </form>
-        </div>
-    </div>
-@endsection
 
 
 @endsection
@@ -251,6 +67,10 @@
 <script>
 
     $(document).ready(function () {
+        $("#menu_stock").addClass('menu-open');
+        $("#item").addClass('active');
+        $("#stock_in").addClass('myactive');
+
         $(".chosen-select").chosen({width: "100%"});
         $.ajaxSetup({
         headers: {
@@ -258,7 +78,7 @@
         }
     });
 
-    var table = $('#stock_in_table').DataTable({
+    var table = $('#DataTable').DataTable({
         responsive: true,
         autoWidth: false,
         ajax: {
@@ -312,8 +132,8 @@
                 name: 'note'
             },
             {
-                data: 'username',
-                name: 'username'
+                data: 'fname',
+                name: 'fname'
             },
            
             {
@@ -325,9 +145,61 @@
         ],
     });
 
-});
-    
-$("#create_form").submit(function(e) {
+    // $("#create_from").on('submit', function(e){
+    //      e.preventDefault();
+   
+      
+    //     var data = $(evt.target).serialize();
+     
+    //     $.ajax({
+       
+    //       data: {
+    //         data
+    //       //  _token: "{{ csrf_token() }}"
+    //         },
+    //       url: "{{ route('stockin.store') }}",
+    //       type: "POST",
+    //       dataType: 'json',
+    //       success: function(sms){
+    //         console.log(sms);
+    //         // if(sms>0)
+    //         // {
+    //         //     let txt = `<div class='alert alert-success p-2' role='alert'>
+    //         //         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    //         //             <span aria-hidden='true'>&times;</span>
+    //         //         </button>
+    //         //         <div>
+    //         //             Data has been saved successfully!
+    //         //         </div>
+    //         //     </div>`;
+    //         //     //$('#sms').html(txt);
+    //         //     $("#create_form").trigger('reset');
+    //         //     $('#stock_in_table').DataTable().ajax.reload();
+    //         //     // update all chosen select
+    //         //   // $('#create_form .chosen-select').trigger("chosen:updated");
+    //         // }
+    //         // else{
+    //         //     let txt = `<div class='alert alert-danger p-2' role='alert'>
+    //         //         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    //         //             <span aria-hidden='true'>&times;</span>
+    //         //         </button>
+    //         //         <div>
+    //         //             Fail to save data, please check again!
+    //         //         </div>
+    //         //     </div>
+    //         //     `;
+    //         //     //$('#sms').html(txt);
+    //         // }
+            
+    //     }
+    //   });
+
+    // }
+
+
+    });
+
+    $("#create_form").submit(function(e) {
     e.preventDefault(); // prevent actual form submit
     var form = $(this);
     var url = form.attr('action'); //get submit url [replace url here if desired]
@@ -376,4 +248,47 @@ $("#create_form").submit(function(e) {
          
 
 </script>
+
+<script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
+	<script>
+        $(document).ready(function () {
+            $("#sidebar li a").removeClass("active");
+            $("#menu_stock>a").addClass("active");
+            $("#menu_stock").addClass("menu-open");
+            $("#menu_stockin").addClass("myactive");
+            $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+			var table = $('#dataTable').DataTable({
+                pageLength: 50,
+                processing: true,
+                serverSide: true,
+                // scrollX: true,
+                ajax: {
+                    url: "{{ route('stockin.index') }}",
+                    type: 'GET'
+                },
+                columns: [
+               
+                    {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                    {data: 'supplier', name: 'date'},
+                    {data: 'amount', name: 'barcode'},
+                    
+                    {
+                        data: 'action', 
+                        name: 'action', 
+                        orderable: false, 
+                        searchable: false
+                    },
+                ],
+                "initComplete" : function () {
+                $('.dataTables_scrollBody thead tr').addClass('hidden');
+            }
+                        
+                    });
+        });
+    </script>
 @endsection

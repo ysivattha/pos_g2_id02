@@ -436,7 +436,6 @@
                             </p>
                             </a>
                             <ul class="nav nav-treeview" id='security_collapse'>
-                               
                                 <li class="nav-item">
                                     <a href="{{ route('user.index') }}" class="nav-link" id="menu_user">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 

@@ -29,7 +29,6 @@
                         {{-- <th>
                             <input type="checkbox" onclick="check(this)" value="off">
                         </th> --}}
-                       
                         <th>{{__('lb.id')}}</th>
                         <th>{{__('lb.category')}}</th>
                         {{-- <th>{{__('lb.image')}}</th> --}}

@@ -47,7 +47,7 @@
                     <th>{{__('lb.paid')}}</th>
                     <th>{{__('lb.rest')}}</th>
                     <th>{{__('lb.note')}}</th>
-                    <th>{{__('lb.username')}}</th>
+                  
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
@@ -281,6 +281,11 @@
 <script>
 
 $(document).ready(function () {
+
+    $("#menu_stock").addClass('menu-open');
+        $("#item").addClass('active');
+        $("#stock_out").addClass('myactive');
+
         $(".chosen-select").chosen({width: "100%"});
         $.ajaxSetup({
         headers: {
@@ -331,8 +336,8 @@ $(document).ready(function () {
             },
 
             {
-                data: 'seller_id',
-                name: 'seller_id'
+                data: 'fname',
+                name: 'fname'
             },
             {
                 data: 'paid',
@@ -346,10 +351,7 @@ $(document).ready(function () {
                 data: 'note',
                 name: 'note'
             },
-            {
-                data: 'username',
-                name: 'username'
-            },
+           
            
             {
                 data: 'action',
