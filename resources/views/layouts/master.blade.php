@@ -127,7 +127,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('balance.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('stock_balance.index') }}" class="nav-link" id='menu_role'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock Balance {{-- {{__('lb.roles')}} --}}
                                     </a>

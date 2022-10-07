@@ -3,7 +3,7 @@
     {{__('lb.item')}}
 @endsection
 @section('header')
-    {{__('lb.item')}}
+    Item111
 @endsection
 @section('content')  
     <div class="toolbox pt-1 pb-1">

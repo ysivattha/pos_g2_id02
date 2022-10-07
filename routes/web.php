@@ -262,8 +262,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('adjust', 'AdjustController@index')->name('adjust.index');
   Route::post('adjust', 'AdjustController@store')->name('adjust.store');
   //stock balance
-  Route::get('stock-balance', 'StockBalanceController@index')->name('balance.index');
-  Route::POST('stock-balance', 'StockBalanceController@store')->name('balance.store');
+  Route::get('stock_balance', 'StockBalanceController@index')->name('stock_balance.index');
+  Route::POST('stock_balance', 'StockBalanceController@store')->name('stock_balance.store');
   // type customer
   Route::get('type-customer', 'TypeCustomerController@index')->name('type.index');
   Route::POST('type-customer', 'TypeCustomerController@store')->name('type.store');

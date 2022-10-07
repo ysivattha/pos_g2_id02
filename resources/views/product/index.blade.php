@@ -32,18 +32,17 @@
                             <input type="checkbox" onclick="check(this)" value="off">
                         </th> --}}
                        
-                        <th>{{__('lb.id')}}</th>
-                        <th>{{__('lb.date')}}</th>
-                        {{-- <th>{{__('lb.image')}}</th> --}}
-                        <th>{{__('lb.barcode')}}</th>
-                        <th>{{__('lb.ref_name')}}</th>
-                        <th>{{__('lb.product_name')}}</th>
-                        <th>{{__('lb.category')}}</th>
-                        <th>{{__('lb.cost')}}</th>
-                        <th>{{__('lb.price')}}</th>
-                        <th>{{__('lb.unit')}}</th>
-                        <th>{{__('lb.income')}}</th>
-                        <th>{{__('lb.note')}}</th>
+                        <th>No.</th>
+                        <th>Date</th>
+                        <th>Barcode</th>
+                        <th>Ref_Name</th>
+                        <th>Product_Name</th>
+                        <th>Category</th>
+                        <th>Cost_In</th>
+                        <th>Price</th>
+                        <th>unit</th>
+                        <th>Income_Type</th>
+                        <th>Note</th>
                         <th>{{__('lb.user')}}</th>
                         <th>{{__('lb.action')}}</th>
 
