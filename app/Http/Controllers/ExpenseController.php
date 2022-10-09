@@ -43,5 +43,10 @@ class ExpenseController extends Controller
         return view('expenses.index');
     }
 
+    public function store(Request $r)
+    {
+        
+    }
+
    
 }

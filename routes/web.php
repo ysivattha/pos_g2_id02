@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\CategController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ExpensesController;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TypeExpense;
+use App\Http\Controllers\TypeIncome;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -169,7 +174,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('doctor-check/yesterday/', 'DoctorCheckController@yesterday')->name('doctor_check.yesterday');
   Route::get('doctor-check/week/', 'DoctorCheckController@week')->name('doctor_check.week');
   // expense
-  Route::get('expense', 'ExpenseController@index')->name('expense.index');
+  // Route::get('expense', 'ExpenseController@index')->name('expense.index');
 
   //exchange rate
   Route::resource('exchange', 'ExchangeController')->except(['destory', 'show']);
@@ -287,6 +292,21 @@ Route::group(['middleware' => 'auth'], function () {
  Route::get('/cat', [CategController::class,'index'])->name('cat.index');
  Route::post('/cat', [CategController::class,'store'])->name('cat.store');
  Route::get('/cat/delete/{id}', [CategController::class,'delete'])->name('cat.delete');
+
+ //income
+ Route::GET('/income', [IncomeController::class,'index'])->name('income.index');
+ Route::POST('/income', [IncomeController::class,'store'])->name('income.store');
+ Route::GET('/expense', [ExpensesController::class,'index'])->name('expense.index');
+ Route::POST('/expense', [ExpensesController::class,'store'])->name('expense.store');
+ Route::GET('/expense-type', [TypeExpense::class,'index'])->name('exp_type.index');
+ Route::POST('/expense-type', [TypeExpense::class,'store'])->name('exp_type.store');
+ Route::GET('/income-type', [TypeIncome::class,'index'])->name('income_type.index');
+ Route::POST('/income-type', [TypeIncome::class,'store'])->name('income_type.store');
+
+ Route::GET('/asset', [AssetController::class,'index'])->name('asset.index');
+ Route::POST('/asset', [AssetController::class,'store'])->name('asset.store');
+
+
 
 });
 
