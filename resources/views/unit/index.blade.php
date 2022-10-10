@@ -193,5 +193,25 @@
     });
 });
 
+
+function removeD(id,obj)
+{
+    let con = confirm('You want to delete this record '+id+'');
+
+    if(con)
+    {
+        $.ajax({
+            type: 'GET', 
+            url: '/cat/delete/' + id ,
+            success: function(sms)
+            {
+
+                
+                $('#dataTable').DataTable().ajax.reload();
+            }
+        });
+    }
+}
+
     </script>
 @endsection

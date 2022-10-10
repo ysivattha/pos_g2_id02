@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.items')}}
+    Supplier List
 @endsection
 @section('header')
-    {{__('lb.items')}}
+    Supplier List
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -30,17 +30,15 @@
        <table class="table table-sm table-bordered" style="width: 100%" id="supplier_table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    
-                    <th>{{__('lb.date')}}</th>
-                    <th>{{__('lb.company_name')}}</th>
-                    <th>{{__('lb.contact_name')}}</th>
-                    <th>{{__('lb.phone')}}</th>
-                    <th>{{__('lb.type')}}</th>
-                    <th>{{__('lb.address')}}</th>
-                    <th>{{__('lb.note')}}</th>
-                   
-                    <th>{{__('lb.user')}}</th>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Company Name</th>
+                    <th>Contact Name</th>
+                    <th>Phone</th>
+                    <th>Type</th>
+                    <th>Address</th>
+                    <th>Note</th>
+                    <th>User</th>
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
@@ -64,7 +62,7 @@
      <input type="hidden" name="per" value="sup_supplier">
      <div class="modal-content">
          <div class="modal-header bg-success">
-             <strong class="modal-title">{{ __('lb.create_customer') }}</strong>
+             <strong class="modal-title"> Add Record </strong>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
              </button>
@@ -74,9 +72,6 @@
 
              <div id="sms">
              </div>
-  
-
-             
              <div class="row">
                  <div class="col-sm-12">
                      <div class="form-group mb-2">
@@ -122,10 +117,10 @@
                      <div class="form-group mb-2">
                  
                          <label for="type_id">
-                             {{__('lb.type_id')}}
+                            Supplier Type
                          </label>
                      
-                         <select name="type_id" id="type_id" class="chosen-select">
+                         <select name="type_id" id="type_id" class="form-control input-xs chosen-select">
                              <option value="">{{__('lb.select_one')}}</option>
                              @foreach ($sup_type as $sup)
                              <option value="{{ $sup->id }}">{{ $sup->s_type }}</option>

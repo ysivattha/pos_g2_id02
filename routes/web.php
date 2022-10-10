@@ -263,6 +263,7 @@ Route::group(['middleware' => 'auth'], function () {
   //unit
   Route::get('unit', 'UnitController@index')->name('unit.index');
   Route::post('unit', 'UnitController@store')->name('unit.store');
+  Route::get('/unit/delete/{id}', [CategController::class,'delete'])->name('unit.delete');
   //stock adjust
   Route::get('adjust', 'AdjustController@index')->name('adjust.index');
   Route::post('adjust', 'AdjustController@store')->name('adjust.store');
