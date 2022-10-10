@@ -183,13 +183,20 @@
 @section('js')
 <script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 <script>
-    $(".chosen-select").chosen({width: "100%"});
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    $(document).ready(function () {
+        $("#sidebar li a").removeClass("active");
+        $("#menu_supplier>a").addClass("active");
+        $("#menu_supplier").addClass("menu-open");
+        $("#menu_sub_supplier").addClass("myactive");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     });
-    // get unit
+
+
+    // get data list
     var table = $('#supplier_table').DataTable({
         responsive: true,
         autoWidth: false,

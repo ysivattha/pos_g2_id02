@@ -56,14 +56,14 @@
 <script>
     $(document).ready(function () {
         $("#menu_stock").addClass('menu-open');
-        $("#item").addClass('active');
-        $("#stock_balance").addClass('myactive');
+        $("#menu_stock").addClass('active');
+        $("#menu_stockbalance").addClass('myactive');
         $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-
+        });
         var table = $('#data_balance').DataTable({
             pageLength: 50,
             processing: true,
@@ -92,11 +92,12 @@
                     searchable: false
                 },
             ],
-            "initComplete" : function () {
-            $('.dataTables_scrollBody thead tr').addClass('hidden');
-        }
+                "initComplete" : function () {
+                    $('.dataTables_scrollBody thead tr').addClass('hidden');
+                }
                     
-                });
-    });
+            });
+    
+
 </script>
 @endsection

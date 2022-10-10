@@ -22,9 +22,9 @@ class typeCustomerController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $type = DB::table('type_customer')
-            ->join('users','type_customer.user_id','users.id')
-            ->select('type_customer.*','users.username')
+            $type = DB::table('cus_customer_type')
+            ->join('users','cus_customer_type.user_id','users.id')
+            ->select('cus_customer_type.*','users.username')
             ->get();
             return datatables()->of($type)
             ->addIndexColumn()

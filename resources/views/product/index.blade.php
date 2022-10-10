@@ -244,11 +244,11 @@
             $("#menu_stock").addClass("menu-open");
             $("#menu_item").addClass("myactive");
             $(".chosen-select").chosen({width: "100%"});
-            $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                    });
 
 			var table = $('#dataTable').DataTable({
                 pageLength: 50,
@@ -282,8 +282,8 @@
                     },
                 ],
                 "initComplete" : function () {
-                $('.dataTables_scrollBody thead tr').addClass('hidden');
-            }
+                    $('.dataTables_scrollBody thead tr').addClass('hidden');
+                }
                         
                     });
         });

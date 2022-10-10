@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.items')}}
+    Stock In
 @endsection
 @section('header')
-    {{__('lb.items')}}
+    Stock In
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">

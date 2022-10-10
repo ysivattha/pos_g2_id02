@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.items')}}
+    Stock Out
 @endsection
 @section('header')
-    {{__('lb.items')}}
+    Stock Out
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -42,7 +42,7 @@
                     <th>{{__('lb.discount')}}</th>
                     <th>{{__('lb.total')}}</th>
                     <th>{{__('lb.tax')}}</th>
-                    <th>{{__('lb.total-tax')}}</th>
+                    <th>Total_With_Tax</th>
                     <th>{{__('lb.seller')}}</th>
                     <th>{{__('lb.paid')}}</th>
                     <th>{{__('lb.rest')}}</th>
@@ -279,88 +279,88 @@
 @section('js')
 <script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 <script>
-
-$(document).ready(function () {
-
-    $("#menu_stock").addClass('menu-open');
-        $("#item").addClass('active');
-        $("#stock_out").addClass('myactive');
-
-        $(".chosen-select").chosen({width: "100%"});
-        $.ajaxSetup({
+    $(document).ready(function () {
+            $("#sidebar li a").removeClass("active");
+            $("#menu_stock>a").addClass("active");
+            $("#menu_stock").addClass("menu-open");
+            $("#menu_stockout").addClass("myactive");
+            $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+        });
+
+
+        // get list
+        var table = $('#stock_out_table').DataTable({
+            responsive: true,
+            autoWidth: false,
+            ajax: {
+                url: "{{ route('stockout.index') }}",
+                type: 'GET'
+            },
+            columns: [
+                {
+                    data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
+                },
+                {
+                    data: 'date',
+                    name: 'date'
+                },
+                {
+                    data: 'contact_name',
+                    name: 'contact_name'
+                },
+                {
+                    data: 'amount',
+                    name: 'amount'
+                },
+                {
+                    data: 'discount',
+                    name: 'discount'
+                },
+                {
+                    data: 'total',
+                    name: 'total'
+                },
+                {
+                    data: 'tax',
+                    name: 'tax'
+                },
+                {
+                    data: 'total_with_tax',
+                    name: 'total_with_tax'
+                },
+
+                {
+                    data: 'fname',
+                    name: 'fname'
+                },
+                {
+                    data: 'paid',
+                    name: 'paid'
+                },
+                {
+                    data: 'rest',
+                    name: 'rest'
+                },
+                {
+                    data: 'note',
+                    name: 'note'
+                },
+            
+            
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                }
+            ],
+        });
+        // get list end
     });
-
-
-    // get unit
-    var table = $('#stock_out_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('stockout.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'date',
-                name: 'date'
-            },
-            {
-                data: 'contact_name',
-                name: 'contact_name'
-            },
-            {
-                data: 'amount',
-                name: 'amount'
-            },
-            {
-                data: 'discount',
-                name: 'discount'
-            },
-            {
-                data: 'total',
-                name: 'total'
-            },
-            {
-                data: 'tax',
-                name: 'tax'
-            },
-            {
-                data: 'total_with_tax',
-                name: 'total_with_tax'
-            },
-
-            {
-                data: 'fname',
-                name: 'fname'
-            },
-            {
-                data: 'paid',
-                name: 'paid'
-            },
-            {
-                data: 'rest',
-                name: 'rest'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
-           
-           
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            }
-        ],
-    });
+    // menu active end
 
     $("#create_form").submit(function(e) {
     e.preventDefault(); // prevent actual form submit
@@ -407,8 +407,6 @@ $(document).ready(function () {
             }
         }
     });
-});
-
 });
 
 function totalOnchange()

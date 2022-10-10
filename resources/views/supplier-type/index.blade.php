@@ -100,14 +100,21 @@
 @endsection
 
 @section('js')
+<script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    $(document).ready(function () {
+        $("#sidebar li a").removeClass("active");
+        $("#menu_supplier>a").addClass("active");
+        $("#menu_supplier").addClass("menu-open");
+        $("#menu_type_supplier").addClass("myactive");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     });
-    // get unit
+
+    // get data list
     var table = $('#s_type_table').DataTable({
         responsive: true,
         autoWidth: false,

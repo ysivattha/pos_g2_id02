@@ -113,21 +113,13 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('stockout.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('stockout.index') }}" class="nav-link" id='menu_stockout'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock Out {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
-
                                 <li class="nav-item">
-                                    <a href="{{ route('adjust.index') }}" class="nav-link" id='menu_role'>
-                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Stock Adjust {{-- {{__('lb.roles')}} --}}
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="{{ route('stock_balance.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('stock_balance.index') }}" class="nav-link" id='menu_stockbalance'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Stock Balance {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -141,7 +133,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('unit.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('unit.index') }}" class="nav-link" id='menu_unit'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Unit {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -161,14 +153,14 @@
                             <ul class="nav nav-treeview" id='security_collapse'>
                                 
                                 <li class="nav-item">
-                                    <a href="{{ route('customer.index') }}" class="nav-link" id="menu_user">
+                                    <a href="{{ route('customer.index') }}" class="nav-link" id="menu_sub_customer">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Customer {{-- {{__('lb.users')}} --}}
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a href="{{ route('type.index') }}" class="nav-link" id='menu_role'>
+                                    <a href="{{ route('type.index') }}" class="nav-link" id='menu_type_customer'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
                                        Type Customer {{-- {{__('lb.roles')}} --}}
                                     </a>
@@ -200,16 +192,16 @@
                             <ul class="nav nav-treeview" id='supplier_collapse'>
                                 
                                 <li class="nav-item">
-                                    <a href="{{ route('supplier.index') }}" class="nav-link" id="menu_supplier">
+                                    <a href="{{ route('supplier.index') }}" class="nav-link" id="menu_sub_supplier">
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Supplier {{-- {{__('lb.users')}} --}}
+                                       Supplier
                                     </a>
                                 </li>
                               
                                 <li class="nav-item">
                                     <a href="{{ route('supplier-type.index') }}" class="nav-link" id='menu_type_supplier'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Type Supplier {{-- {{__('lb.roles')}} --}}
+                                       Type Supplier
                                     </a>
                                 </li>
 

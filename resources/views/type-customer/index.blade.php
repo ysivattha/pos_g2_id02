@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.items')}}
+    Customer Type
 @endsection
 @section('header')
-    {{__('lb.items')}}
+    Customer Type
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -31,7 +31,6 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    
                     <th>{{__('lb.type')}}</th>
                     <th>{{__('lb.note')}}</th>
                     <th>{{__('lb.user')}}</th>
@@ -98,45 +97,55 @@
 
 @section('js')
 <script>
-         
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    // get unit
-    var table = $('#type_table').DataTable({
-        responsive: true,
-        autoWidth: false,
-        ajax: {
-            url: "{{ route('type.index') }}",
-            type: 'GET'
-        },
-        columns: [
-            {
-                data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-            },
-            {
-                data: 'type',
-                name: 'type'
-            },
-            {
-                data: 'note',
-                name: 'note'
-            },
-            {
-                data: 'username',
-                name: 'username'
-            },
-           
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
+    
+    // menu active
+    $(document).ready(function () {
+            $("#sidebar li a").removeClass("active");
+            $("#menu_customer>a").addClass("active");
+            $("#menu_customer").addClass("menu-open");
+            $("#menu_type_customer").addClass("myactive");
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        ],
+        });
+        // get list
+        var table = $('#type_table').DataTable({
+            responsive: true,
+            autoWidth: false,
+            ajax: {
+                url: "{{ route('type.index') }}",
+                type: 'GET'
+            },
+                columns: [
+                    {
+                        data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
+                    },
+                    {
+                        data: 'c_type',
+                        name: 'c_type'
+                    },
+                    {
+                        data: 'note',
+                        name: 'note'
+                    },
+                    {
+                        data: 'username',
+                        name: 'username'
+                    },
+                
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
+                ],
+        });
+        // end get list
+
     });
+    // end // menu active
 
     $("#create_form").submit(function(e) {
     e.preventDefault(); // prevent actual form submit

@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.items')}}
+    Unit
 @endsection
 @section('header')
-    {{__('lb.items')}}
+    Unit
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -107,10 +107,11 @@
             $("#menu_stock>a").addClass("active");
             $("#menu_stock").addClass("menu-open");
             $("#menu_unit").addClass("myactive");
-            $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
         });
 
 			var table = $('#dataTable').DataTable({
@@ -144,8 +145,7 @@
             }
                         
             });
-        });
-
+        
  $("#create_form").submit(function(e) {
     e.preventDefault(); // prevent actual form submit
     var form = $(this);

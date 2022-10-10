@@ -29,7 +29,7 @@
                         {{-- <th>
                             <input type="checkbox" onclick="check(this)" value="off">
                         </th> --}}
-                        <th>{{__('lb.id')}}</th>
+                        <th>#</th>
                         <th>{{__('lb.category')}}</th>
                         {{-- <th>{{__('lb.image')}}</th> --}}
                         <th>{{__('lb.note')}}</th>
@@ -105,9 +105,10 @@
             $("#menu_stock").addClass("menu-open");
             $("#menu_cat").addClass("myactive");
             $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         });
 
 			var table = $('#dataTable').DataTable({
@@ -140,8 +141,8 @@
                 $('.dataTables_scrollBody thead tr').addClass('hidden');
             }
                         
-                    });
         });
+        
 
     $("#create_form").submit(function(e) {
     e.preventDefault(); // prevent actual form submit
