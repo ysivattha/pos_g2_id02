@@ -21,14 +21,15 @@ class SupplierTypeController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-        $type = DB::table('supplier_type')
-        ->join('users','supplier_type.user_id','users.id')
-       ->select('supplier_type.*','users.username')
+        $type = DB::table('sup_supplier_type')
+        ->leftjoin('users','sup_supplier_type.user_id','users.id')
+       ->select('sup_supplier_type.*','users.username')
         ->get();
             return datatables()->of($type)
             ->addIndexColumn()
             ->addColumn('action', function($type) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $type->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $type->id .')"><i class="fa fa-trash"></i> Delete</a>';
+                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $type->id .')"><i class="fa fa-edit"></i> Edit</a>' 
+                . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $type->id .')"><i class="fa fa-trash"></i> Delete</a>';
             })->make(true);
         }
         

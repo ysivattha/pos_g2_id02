@@ -22,10 +22,10 @@ class SupplierController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-          $supplier = DB::table('supplier')
-          ->join('users','supplier.user_id','users.id')
-          ->join('supplier_type','supplier.type_id','supplier_type.id')
-          ->select('supplier.*','supplier_type.s_type','users.username')
+          $supplier = DB::table('sup_supplier')
+          ->leftjoin('users','sup_supplier.user_id','users.id')
+          ->leftjoin('sup_supplier_type','sup_supplier.type_id','sup_supplier_type.id')
+          ->select('sup_supplier.*','sup_supplier_type.s_type','users.username')
           ->get();
             return datatables()->of($supplier)
             ->addIndexColumn()
