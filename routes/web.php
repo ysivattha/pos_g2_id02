@@ -49,8 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('company/edit/{id}', 'CompanyController@edit');
   Route::post('company/save', 'CompanyController@save');
 
-  // position
-  Route::get('position', 'PositionController@index')->name('position.index');
+
   // protocol
   Route::get('protocol', 'ProtocolController@index')->name('protocol.index');
   Route::get('protocol-category', 'ProtocolCategoryController@index')->name('protocol_category.index');
@@ -307,7 +306,13 @@ Route::group(['middleware' => 'auth'], function () {
  Route::GET('/asset', [AssetController::class,'index'])->name('asset.index');
  Route::POST('/asset', [AssetController::class,'store'])->name('asset.store');
 
+  // position
+  Route::GET('/position', 'PositionController@index')->name('position.index');
+  Route::POST('/position', 'PositionController@store')->name('position.store');
 
+   // employee
+   Route::GET('/employee', 'EmployeeController@index')->name('emp.index');
+   Route::POST('/employee', 'EmployeeController@store')->name('emp.store');
 
 });
 
