@@ -5,7 +5,9 @@ use App\Http\Controllers\CategController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SexController;
 use App\Http\Controllers\TypeExpense;
 use App\Http\Controllers\TypeIncome;
 use Illuminate\Support\Facades\Route;
@@ -59,9 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
   // medicine library
   Route::get('medicine-library', 'MedicineLibraryController@index')->name('medicine_library.index');
   // department
-  Route::get('department', 'DepartmentController@index')->name('department.index');
-  Route::get('department/detail/{id}', 'DepartmentController@detail')->name('department.detail');
-  Route::get('section/delete/{id}', 'DepartmentController@delete')->name('section.delete');
+
 
   //diagnosis-template
   Route::get('diagnosis-template', 'DiagnosisTemplateController@index')->name('diagnosis_template.index');
@@ -312,6 +312,15 @@ Route::group(['middleware' => 'auth'], function () {
    // employee
    Route::GET('/employee', 'EmployeeController@index')->name('emp.index');
    Route::POST('/employee', 'EmployeeController@store')->name('emp.store');
+  //
+  Route::GET('/payroll', [PayrollController::class,'index'])->name('payroll.index');
+  Route::POST('/payroll', [PayrollController::class,'store'])->name('payroll.store');
+  //sex
+  Route::GET('/sex', [SexController::class,'index'])->name('sex.index');
+  Route::POST('/sex', [SexController::class,'store'])->name('sex.store');
+  //department
+  Route::GET('/department', 'DepartmentController@index')->name('department.index');
+  Route::POST('/department', 'DepartmentController@store')->name('department.store');
 
 });
 

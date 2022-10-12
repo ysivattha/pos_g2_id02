@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{ __('lb.department') }}
+    {{ __('lb.payroll') }}
 @endsection
 @section('header')
-    {{ __('lb.department') }}
+    {{ __('lb.payroll') }}
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -32,7 +32,9 @@
                 <tr>
                     <th>#</th>
                     
-                    <th>{{__('lb.department')}}</th>
+                    <th>{{__('lb.date')}}</th>
+                    <th>{{__('lb.description')}}</th>
+                    <th>{{__('lb.amount')}}</th>
                     <th>{{__('lb.note')}}</th>
                     <th>{{__('lb.user')}}</th>
                     <th>{{ __('lb.action') }}</th>
@@ -46,13 +48,13 @@
 <!-- create model -->
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <form  method="POST" id='create_form'  action="{{ route('department.store') }}">
+      <form  method="POST" id='create_form'  action="{{ route('payroll.store') }}">
           @csrf
-          <input type="hidden" name="tbl" value="hr_department">
-          <input type="hidden" name="per" value="hr_department">
+          <input type="hidden" name="tbl" value="hr_payroll">
+          <input type="hidden" name="per" value="hr_payroll">
           <div class="modal-content">
             <div class="modal-header bg-success">
-                <strong class="modal-title">{{__('lb.create_sex')}}</strong>
+                <strong class="modal-title">{{__('lb.unit')}}</strong>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -61,11 +63,29 @@
                 <div id="sms">
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3" for="department">
-                        {{__('lb.department')}} <span class="text-danger">*</span>
+                    <label class="col-md-3" for="date">
+                        {{__('lb.date')}} <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="department" id="department" class="form-control input-xs" required>
+                        <input type="date" name="date" id="date" class="form-control input-xs" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3" for="description">
+                        {{__('lb.description')}} <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="text" name="description" id="description" class="form-control input-xs" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3" for="amount">
+                        {{__('lb.amount')}} <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-md-9">
+                        <input type="number" min="0" step="any" name="amount" id="amount" class="form-control input-xs" required>
                     </div>
                 </div>
 
@@ -77,6 +97,7 @@
                         <input type="text" name="note" id="note" class="form-control input-xs" >
                     </div>
                 </div>
+
                  
               </div>
               <div class="modal-footer">
@@ -113,7 +134,9 @@
                     }
                 });
         });
-        //dataTable
+        //dateTable
+        
+        
  $("#create_form").submit(function(e) {
     e.preventDefault(); // prevent actual form submit
     var form = $(this);

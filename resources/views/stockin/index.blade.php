@@ -92,7 +92,7 @@
                                     <option value="">{{__('lb.select_one')}}</option>
                                     <option value="1">123</option>
                                     @foreach($suppliers as $sup)
-                                    <option value="{{ $sup->id }}">{{ $s->contact_name }}</option>
+                                    <option value="{{ $sup->id }}">{{ $sup->contact_name }}</option>
                                     @endforeach
                                 </select>
 

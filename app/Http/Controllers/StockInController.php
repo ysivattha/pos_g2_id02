@@ -38,7 +38,9 @@ class StockInController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('stockin.index');
+        $data['suppliers'] = DB::table('sup_supplier')->get();
+        $data['emps'] = DB::table('hr_employee')->get();
+        return view('stockin.index' , $data);
     }
 
     public function store(Request $r)

@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{ __('lb.department') }}
+    {{ __('lb.sex') }}
 @endsection
 @section('header')
-    {{ __('lb.department') }}
+    {{ __('lb.sex') }}
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -32,7 +32,7 @@
                 <tr>
                     <th>#</th>
                     
-                    <th>{{__('lb.department')}}</th>
+                    <th>{{__('lb.sex')}}</th>
                     <th>{{__('lb.note')}}</th>
                     <th>{{__('lb.user')}}</th>
                     <th>{{ __('lb.action') }}</th>
@@ -46,10 +46,10 @@
 <!-- create model -->
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <form  method="POST" id='create_form'  action="{{ route('department.store') }}">
+      <form  method="POST" id='create_form'  action="{{ route('sex.store') }}">
           @csrf
-          <input type="hidden" name="tbl" value="hr_department">
-          <input type="hidden" name="per" value="hr_department">
+          <input type="hidden" name="tbl" value="hr_sex">
+          <input type="hidden" name="per" value="hr_sex">
           <div class="modal-content">
             <div class="modal-header bg-success">
                 <strong class="modal-title">{{__('lb.create_sex')}}</strong>
@@ -61,11 +61,11 @@
                 <div id="sms">
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3" for="department">
-                        {{__('lb.department')}} <span class="text-danger">*</span>
+                    <label class="col-md-3" for="sex">
+                        {{__('lb.sex')}} <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="department" id="department" class="form-control input-xs" required>
+                        <input type="text" name="sex" id="sex" class="form-control input-xs" required>
                     </div>
                 </div>
 
