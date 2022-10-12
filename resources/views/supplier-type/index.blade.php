@@ -170,7 +170,7 @@
                 </div>`;
                 $('#sms').html(txt);
                 $("#create_form")[0].reset();
-                $('#dataTable').DataTable().ajax.reload();
+                $('#s_type_table').DataTable().ajax.reload();
                 // update all chosen select
                 $('#create_form .chosen-select').trigger("chosen:updated");
                 setTimeout(function() { 

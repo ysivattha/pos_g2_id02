@@ -51,7 +51,7 @@
           <input type="hidden" name="per" value="cus_customer_type">
           <div class="modal-content">
             <div class="modal-header bg-success">
-                <strong class="modal-title">{{__('lb.create_customer_type')}}</strong>
+                <strong class="modal-title"> Add Record </strong>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-md-3" for="c_type">
-                        {{__('lb.customer_type')}} <span class="text-danger">*</span>
+                        Customer Type <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-9">
                         <input type="text" name="c_type" id="c_type" class="form-control input-xs" required>
@@ -70,7 +70,7 @@
 
                 <div class="form-group row">
                     <label class="col-md-3" for="note">
-                        {{__('lb.note')}} 
+                        Note
                     </label>
                     <div class="col-md-9">
                         <input type="text" name="note" id="note" class="form-control input-xs" >
