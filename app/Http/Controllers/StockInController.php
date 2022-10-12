@@ -22,7 +22,7 @@ class StockInController extends Controller
     {
         if (request()->ajax()) 
         {
-            $data = \DB::table('sto_stock_in')
+            $data = DB::table('sto_stock_in')
             ->leftjoin('users' , 'sto_stock_in.user_id','users.id')
             ->leftjoin('sup_supplier','sto_stock_in.supplier_id','sup_supplier.id')
             ->where('sto_stock_in.is_active',1)
@@ -38,6 +38,10 @@ class StockInController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+
+        $data['suppliers']=DB::table('sup_supplier')
+        ->where('is_active',1)->get();
+
         return view('stockin.index');
     }
 

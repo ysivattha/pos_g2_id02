@@ -88,14 +88,14 @@
                                     {{__('lb.supplier')}} <span class="text-danger">*</span>
                                 </label>
 
-                                <select name="supplier" id="supplier" class="chosen-select">
+                            <select name="supplier" id="supplier" class="chosen-select">
                                     <option value="">{{__('lb.select_one')}}</option>
                                     <option value="1">123</option>
                                     @foreach($suppliers as $sup)
                                     <option value="{{ $sup->id }}">{{ $s->contact_name }}</option>
                                     @endforeach
                                 </select>
-
+                    
                             </div>
 
 

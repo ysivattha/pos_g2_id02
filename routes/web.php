@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
   // medicine library
   Route::get('medicine-library', 'MedicineLibraryController@index')->name('medicine_library.index');
   // department
-  Route::get('department', 'DepartmentController@index')->name('department.index');
+  Route::get('hr-department', 'DepartmentController@index')->name('hr-department.index');
   Route::get('department/detail/{id}', 'DepartmentController@detail')->name('department.detail');
   Route::get('section/delete/{id}', 'DepartmentController@delete')->name('section.delete');
 

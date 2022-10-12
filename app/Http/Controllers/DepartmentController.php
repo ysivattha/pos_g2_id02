@@ -17,30 +17,30 @@ class DepartmentController extends Controller
             return $next($request);
         });
     }
-    public function index(Request $r)
+    public function index()
     {
-        if(!check('department', 'l')){
-            return view('permissions.no');
-        }
-        
-        if ($r->ajax()) 
+ 
+        if (request()->ajax()) 
         {
-            $data = Department::where('active', 1);
-            return Datatables::of($data)
-                ->addColumn('check', function($row){
-                    $input = "<input type='checkbox' id='ch{$row->id}' value='{$row->id}'>";
-                    return $input;
-                })
+            $data = \DB::table('hr_department')
+            ->where('hr_department.is_active',1)
+            ->leftjoin('users','hr_department.user_id','users.id')
+            ->select('hr_department.*','users.first_name as fname','users.last_name as lname')
+            ->get();
+
+
+            return datatables()->of($data)
                 ->addIndexColumn()
-              
                 ->addColumn('action', function($row){
-                    $btn = btn_actions($row->id, 'departments', 'department');
+                    $btn = btn_actions($row->id, 'user_id', 'user_id');
                     return $btn;
                 })
-                ->rawColumns(['action', 'check'])
+                
+                ->rawColumns(['action'])
                 ->make(true);
-        }
-        return view('departments.index');
+            }
+
+            return view('hr-department.index');
     }
   
    
