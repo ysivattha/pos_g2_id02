@@ -30,7 +30,8 @@ class SupplierController extends Controller
             return datatables()->of($supplier)
             ->addIndexColumn()
             ->addColumn('action', function($supplier) {
-                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $supplier->id .')"><i class="fa fa-edit"></i> Edit</a>' . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $supplier->id .')"><i class="fa fa-trash"></i> Delete</a>';
+                return '<a class="btn btn-primary btn-xs rounded-0 text-white" onclick="editData('. $supplier->id .')"><i class="fa fa-edit"></i> Edit</a>' 
+                . ' <a class="btn btn-danger btn-xs rounded-0 text-white" onclick="deleteData('. $supplier->id .')"><i class="fa fa-trash"></i> Delete</a>';
             })->make(true);
         }
 
@@ -54,6 +55,6 @@ class SupplierController extends Controller
         $data['datetime']=now();
        
         $i = \DB::table($tbl)->insert($data);
-        return (int)$i;
+        //return (int)$i;
     }
 }

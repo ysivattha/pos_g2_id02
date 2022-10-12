@@ -331,7 +331,7 @@
                                 <li class="nav-item">
                                     <a href="#" class="nav-link" id='menu_department'>
                                         <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
-                                       Department    {{-- {{__('lb.roles')}} --}}
+                                       Department 
                                     </a>
                                 </li>
                                 

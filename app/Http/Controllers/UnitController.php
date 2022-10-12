@@ -67,10 +67,14 @@ class UnitController extends Controller
             return (int)$i;
         }
 
-        return -1;
+        return -1;    
+    }
 
+    public function delete($id)
+    {
+        $unit = \DB::table('sto_unit')->where('id',$id)->update(['is_active'=>0]);
     
-    
+        return $unit;
     }
 
 

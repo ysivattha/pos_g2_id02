@@ -22,7 +22,7 @@ class StockInController extends Controller
     {
         if (request()->ajax()) 
         {
-            $data = \DB::table('sto_stock_in')
+            $data = DB::table('sto_stock_in')
             ->leftjoin('users' , 'sto_stock_in.user_id','users.id')
             ->leftjoin('sup_supplier','sto_stock_in.supplier_id','sup_supplier.id')
             ->where('sto_stock_in.is_active',1)
@@ -38,9 +38,17 @@ class StockInController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+<<<<<<< HEAD
         $data['suppliers'] = DB::table('sup_supplier')->get();
         $data['emps'] = DB::table('hr_employee')->get();
         return view('stockin.index' , $data);
+=======
+
+        $data['suppliers']=DB::table('sup_supplier')
+        ->where('is_active',1)->get();
+
+        return view('stockin.index');
+>>>>>>> 211e0b32718c9443d8b2c620abd9c3fe7cd447d7
     }
 
     public function store(Request $r)

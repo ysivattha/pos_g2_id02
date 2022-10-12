@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    Customer Type
+    Unit
 @endsection
 @section('header')
-    Customer Type
+    Unit
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -27,31 +27,32 @@
 	<div class="card-body">
        @component('coms.alert')
        @endcomponent
-       <table class="table table-sm table-bordered" style="width: 100%" id="type_table">
+       <table class="table table-sm table-bordered" style="width: 100%" id="dataTable">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{__('lb.type')}}</th>
+                    
+                    <th>Department</th>
                     <th>{{__('lb.note')}}</th>
                     <th>{{__('lb.user')}}</th>
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
-        
+            
         </table>
+       
 	</div>
 </div>
-
 <!-- create model -->
 <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <form  method="POST" id='create_form'  action="{{ route('type.store') }}">
+      <form  method="POST" id='create_form'  action="{{ route('unit.store') }}">
           @csrf
-          <input type="hidden" name="tbl" value="cus_customer_type">
-          <input type="hidden" name="per" value="cus_customer_type">
+          <input type="hidden" name="tbl" value="sto_unit">
+          <input type="hidden" name="per" value="sto_unit">
           <div class="modal-content">
             <div class="modal-header bg-success">
-                <strong class="modal-title"> Add Record </strong>
+                <strong class="modal-title">{{__('lb.unit')}}</strong>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -60,17 +61,17 @@
                 <div id="sms">
                 </div>
                 <div class="form-group row">
-                    <label class="col-md-3" for="c_type">
-                        Customer Type <span class="text-danger">*</span>
+                    <label class="col-md-3" for="unit">
+                        {{__('lb.unit')}} <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-9">
-                        <input type="text" name="c_type" id="c_type" class="form-control input-xs" required>
+                        <input type="text" name="unit" id="unit" class="form-control input-xs" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-md-3" for="note">
-                        Note
+                        {{__('lb.note')}} 
                     </label>
                     <div class="col-md-9">
                         <input type="text" name="note" id="note" class="form-control input-xs" >
@@ -93,61 +94,59 @@
 </div>
 
 
+
 @endsection
 
+
+
 @section('js')
-<script>
-    
-    // menu active
-    $(document).ready(function () {
+<script src="{{asset('chosen/chosen.jquery.min.js')}}"></script>
+	<script>
+        $(document).ready(function () {
             $("#sidebar li a").removeClass("active");
-            $("#menu_customer>a").addClass("active");
-            $("#menu_customer").addClass("menu-open");
-            $("#menu_type_customer").addClass("myactive");
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        // get list
-        var table = $('#type_table').DataTable({
-            responsive: true,
-            autoWidth: false,
-            ajax: {
-                url: "{{ route('type.index') }}",
-                type: 'GET'
-            },
-                columns: [
-                    {
-                        data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false
-                    },
-                    {
-                        data: 'c_type',
-                        name: 'c_type'
-                    },
-                    {
-                        data: 'note',
-                        name: 'note'
-                    },
-                    {
-                        data: 'username',
-                        name: 'username'
-                    },
-                
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
+            $("#menu_stock>a").addClass("active");
+            $("#menu_stock").addClass("menu-open");
+            $("#menu_department").addClass("myactive");
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
-                ],
+                });
         });
-        // end get list
 
-    });
-    // end // menu active
-
-    $("#create_form").submit(function(e) {
+			var table = $('#dataTable').DataTable({
+                pageLength: 50,
+                processing: true,
+                serverSide: true,
+                // scrollX: true,
+                ajax: {
+                    url: "{{ route('hr-department.index') }}",
+                    type: 'GET'
+                },
+                columns: [
+                    {data: 'DT_RowIndex', name: 'id', searchable: false, orderable: false},
+                    {data: 'department', name: 'department'},
+                    {data: 'note', name: 'note'},
+                    {
+                        data: "fname",
+                        render: function (data, type, row) {
+                        return row.fname + ' ' + row.lname ;
+                        }
+                    },
+                    {
+                        data: 'action', 
+                        name: 'action', 
+                        orderable: false, 
+                        searchable: false
+                    },
+                ],
+                "initComplete" : function () {
+                $('.dataTables_scrollBody thead tr').addClass('hidden');
+            }
+                        
+            });
+        
+ $("#create_form").submit(function(e) {
     e.preventDefault(); // prevent actual form submit
     var form = $(this);
     var url = form.attr('action'); //get submit url [replace url here if desired]
@@ -156,7 +155,7 @@
          url: url,
          data: form.serialize(), // serializes form input
          success: function(sms){
-            
+      
             if(sms>0)
             {
                 let txt = `<div class='alert alert-success p-2' role='alert'>
@@ -195,7 +194,24 @@
 });
 
 
+function removeD(id,obj)
+{
+    let con = confirm('You want to delete this record '+id+'');
 
+    if(con)
+    {
+        $.ajax({
+            type: 'GET', 
+            url: '/cat/delete/' + id ,
+            success: function(sms)
+            {
 
-</script>
+                
+                $('#dataTable').DataTable().ajax.reload();
+            }
+        });
+    }
+}
+
+    </script>
 @endsection

@@ -63,6 +63,12 @@ Route::group(['middleware' => 'auth'], function () {
   // department
 
 
+
+  // Route::get('hr-department', 'DepartmentController@index')->name('hr-department.index');
+  // Route::get('department/detail/{id}', 'DepartmentController@detail')->name('department.detail');
+  // Route::get('section/delete/{id}', 'DepartmentController@delete')->name('section.delete');
+
+
   //diagnosis-template
   Route::get('diagnosis-template', 'DiagnosisTemplateController@index')->name('diagnosis_template.index');
   Route::get('diagnosis-template/create', 'DiagnosisTemplateController@create')->name('diagnosis_template.create');
@@ -262,6 +268,7 @@ Route::group(['middleware' => 'auth'], function () {
   //unit
   Route::get('unit', 'UnitController@index')->name('unit.index');
   Route::post('unit', 'UnitController@store')->name('unit.store');
+  Route::get('/unit/delete/{id}', [CategController::class,'delete'])->name('unit.delete');
   //stock adjust
   Route::get('adjust', 'AdjustController@index')->name('adjust.index');
   Route::post('adjust', 'AdjustController@store')->name('adjust.store');

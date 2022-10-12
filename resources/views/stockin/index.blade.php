@@ -69,7 +69,7 @@
             <input type="hidden" name="per" value="sto_stock_in">
             <div class="modal-content">
                 <div class="modal-header bg-success">
-                    <strong class="modal-title">{{ __('lb.create_stock_out') }}</strong>
+                    <strong class="modal-title"> Stock In</strong>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -88,14 +88,14 @@
                                     {{__('lb.supplier')}} <span class="text-danger">*</span>
                                 </label>
 
-                                <select name="supplier" id="supplier" class="chosen-select">
+                            <select name="supplier" id="supplier" class="chosen-select">
                                     <option value="">{{__('lb.select_one')}}</option>
                                     <option value="1">123</option>
                                     @foreach($suppliers as $sup)
                                     <option value="{{ $sup->id }}">{{ $sup->contact_name }}</option>
                                     @endforeach
                                 </select>
-
+                    
                             </div>
 
 

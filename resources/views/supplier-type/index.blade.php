@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('title')
-    {{__('lb.items')}}
+    Supplier Type
 @endsection
 @section('header')
-    {{__('lb.items')}}
+    Supplier Type
 @endsection
 @section('content')
 <link rel="stylesheet" href="{{asset('chosen/chosen.min.css')}}">
@@ -30,12 +30,10 @@
        <table class="table table-sm table-bordered" style="width: 100%" id="s_type_table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    
-                    <th>{{__('lb.supplier_type')}}</th>
-                    <th>{{__('lb.note')}}</th>
-                    <th>{{__('lb.user')}}</th>
-                   
+                    <th>No.</th>
+                    <th>Type</th>
+                    <th>Note</th>
+                    <th>User</th>
                     <th>{{ __('lb.action') }}</th>
                 </tr>
             </thead>
@@ -53,7 +51,7 @@
           <input type="hidden" name="per" value="sup_supplier_type">
           <div class="modal-content">
             <div class="modal-header bg-success">
-                <strong class="modal-title">{{__('lb.create_supplier_type')}}</strong>
+                <strong class="modal-title"> Add Record </strong>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -63,7 +61,7 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-md-3" for="s_type">
-                        {{__('lb.supplier_type')}} <span class="text-danger">*</span>
+                        Supplier Type <span class="text-danger">*</span>
                     </label>
                     <div class="col-md-9">
                         <input type="text" name="s_type" id="s_type" class="form-control input-xs" required>
@@ -72,7 +70,7 @@
 
                 <div class="form-group row">
                     <label class="col-md-3" for="note">
-                        {{__('lb.note')}} 
+                        Note
                     </label>
                     <div class="col-md-9">
                         <input type="text" name="note" id="note" class="form-control input-xs" >
@@ -172,7 +170,7 @@
                 </div>`;
                 $('#sms').html(txt);
                 $("#create_form")[0].reset();
-                $('#dataTable').DataTable().ajax.reload();
+                $('#s_type_table').DataTable().ajax.reload();
                 // update all chosen select
                 $('#create_form .chosen-select').trigger("chosen:updated");
                 setTimeout(function() { 
