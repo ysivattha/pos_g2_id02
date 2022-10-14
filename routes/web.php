@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AbsentController;
+use App\Http\Controllers\AbsentTypeController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\CategController;
 use App\Http\Controllers\CategoryController;
@@ -328,7 +330,12 @@ Route::group(['middleware' => 'auth'], function () {
   //department
   Route::GET('/department', 'DepartmentController@index')->name('department.index');
   Route::POST('/department', 'DepartmentController@store')->name('department.store');
-
+    //absent type
+  Route::GET('/absent-type', [AbsentTypeController::class,'index'])->name('absent-type.index');
+  Route::POST('/absent-type', [AbsentTypeController::class,'store'])->name('absent-type.store');
+        //absent type
+  Route::GET('/absent', [AbsentController::class,'index'])->name('absent.index');
+  Route::POST('/absent', [AbsentController::class,'store'])->name('absent.store');
 });
 
  
