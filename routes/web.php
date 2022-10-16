@@ -5,10 +5,13 @@ use App\Http\Controllers\AbsentTypeController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\CategController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EmpStatusController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\PayTypeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ResultTypeController;
 use App\Http\Controllers\SexController;
 use App\Http\Controllers\TypeExpense;
 use App\Http\Controllers\TypeIncome;
@@ -270,7 +273,7 @@ Route::group(['middleware' => 'auth'], function () {
   //unit
   Route::get('unit', 'UnitController@index')->name('unit.index');
   Route::post('unit', 'UnitController@store')->name('unit.store');
-  Route::get('/unit/delete/{id}', [CategController::class,'delete'])->name('unit.delete');
+  Route::get('/unit/delete/{id}', [CategController::class, 'delete'])->name('unit.delete');
   //stock adjust
   Route::get('adjust', 'AdjustController@index')->name('adjust.index');
   Route::post('adjust', 'AdjustController@store')->name('adjust.store');
@@ -284,58 +287,69 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('customer', 'CustomerController@index')->name('customer.index');
   Route::POST('customer', 'CustomerController@store')->name('cus.store');
   //category
-  Route::get('category',[CategoryController::class,'index'])->name('category.index');
- //supplier_ type
- Route::get('supplier-type', 'SupplierTypeController@index')->name('supplier-type.index');
- Route::POST('supplier-type', 'SupplierTypeController@store')->name('sup-type.store');
- //supplier
- Route::get('supplier', 'SupplierController@index')->name('supplier.index');
- Route::POST('supplier', 'SupplierController@store')->name('supplier.store');
+  Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+  //supplier_ type
+  Route::get('supplier-type', 'SupplierTypeController@index')->name('supplier-type.index');
+  Route::POST('supplier-type', 'SupplierTypeController@store')->name('sup-type.store');
+  //supplier
+  Route::get('supplier', 'SupplierController@index')->name('supplier.index');
+  Route::POST('supplier', 'SupplierController@store')->name('supplier.store');
 
- Route::post('stockin', 'StockInController@store')->name('stockin.store');
- Route::post('stockout', 'StockOutController@store')->name('stockout.store');
+  Route::post('stockin', 'StockInController@store')->name('stockin.store');
+  Route::post('stockout', 'StockOutController@store')->name('stockout.store');
 
- Route::get('/product', [ProductController::class,'index'])->name('product.index');
- Route::post('/product', [ProductController::class,'store'])->name('product.store');
- Route::get('/cat', [CategController::class,'index'])->name('cat.index');
- Route::post('/cat', [CategController::class,'store'])->name('cat.store');
- Route::get('/cat/delete/{id}', [CategController::class,'delete'])->name('cat.delete');
+  Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+  Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+  Route::get('/cat', [CategController::class, 'index'])->name('cat.index');
+  Route::post('/cat', [CategController::class, 'store'])->name('cat.store');
+  Route::get('/cat/delete/{id}', [CategController::class, 'delete'])->name('cat.delete');
 
- //income
- Route::GET('/income', [IncomeController::class,'index'])->name('income.index');
- Route::POST('/income', [IncomeController::class,'store'])->name('income.store');
- Route::GET('/expense', [ExpensesController::class,'index'])->name('expense.index');
- Route::POST('/expense', [ExpensesController::class,'store'])->name('expense.store');
- Route::GET('/expense-type', [TypeExpense::class,'index'])->name('exp_type.index');
- Route::POST('/expense-type', [TypeExpense::class,'store'])->name('exp_type.store');
- Route::GET('/income-type', [TypeIncome::class,'index'])->name('income_type.index');
- Route::POST('/income-type', [TypeIncome::class,'store'])->name('income_type.store');
+  //income
+  Route::GET('/income', [IncomeController::class, 'index'])->name('income.index');
+  Route::POST('/income', [IncomeController::class, 'store'])->name('income.store');
+  Route::GET('/expense', [ExpensesController::class, 'index'])->name('expense.index');
+  Route::POST('/expense', [ExpensesController::class, 'store'])->name('expense.store');
+  Route::GET('/expense-type', [TypeExpense::class, 'index'])->name('exp_type.index');
+  Route::POST('/expense-type', [TypeExpense::class, 'store'])->name('exp_type.store');
+  Route::GET('/income-type', [TypeIncome::class, 'index'])->name('income_type.index');
+  Route::POST('/income-type', [TypeIncome::class, 'store'])->name('income_type.store');
 
- Route::GET('/asset', [AssetController::class,'index'])->name('asset.index');
- Route::POST('/asset', [AssetController::class,'store'])->name('asset.store');
+  Route::GET('/asset', [AssetController::class, 'index'])->name('asset.index');
+  Route::POST('/asset', [AssetController::class, 'store'])->name('asset.store');
 
   // position
   Route::GET('/position', 'PositionController@index')->name('position.index');
   Route::POST('/position', 'PositionController@store')->name('position.store');
 
-   // employee
-   Route::GET('/employee', 'EmployeeController@index')->name('emp.index');
-   Route::POST('/employee', 'EmployeeController@store')->name('emp.store');
+  // employee
+  Route::GET('/employee', 'EmployeeController@index')->name('emp.index');
+  Route::POST('/employee', 'EmployeeController@store')->name('emp.store');
   //
-  Route::GET('/payroll', [PayrollController::class,'index'])->name('payroll.index');
-  Route::POST('/payroll', [PayrollController::class,'store'])->name('payroll.store');
+  Route::GET('/payroll', [PayrollController::class, 'index'])->name('payroll.index');
+  Route::POST('/payroll', [PayrollController::class, 'store'])->name('payroll.store');
   //sex
-  Route::GET('/sex', [SexController::class,'index'])->name('sex.index');
-  Route::POST('/sex', [SexController::class,'store'])->name('sex.store');
+  Route::GET('/sex', [SexController::class, 'index'])->name('sex.index');
+  Route::POST('/sex', [SexController::class, 'store'])->name('sex.store');
   //department
   Route::GET('/department', 'DepartmentController@index')->name('department.index');
   Route::POST('/department', 'DepartmentController@store')->name('department.store');
-    //absent type
-  Route::GET('/absent-type', [AbsentTypeController::class,'index'])->name('absent-type.index');
-  Route::POST('/absent-type', [AbsentTypeController::class,'store'])->name('absent-type.store');
-        //absent type
-  Route::GET('/absent', [AbsentController::class,'index'])->name('absent.index');
-  Route::POST('/absent', [AbsentController::class,'store'])->name('absent.store');
+  //absent type
+  Route::GET('/absent-type', [AbsentTypeController::class, 'index'])->name('absent-type.index');
+  Route::POST('/absent-type', [AbsentTypeController::class, 'store'])->name('absent-type.store');
+  //absent type
+  Route::GET('/absent', [AbsentController::class, 'index'])->name('absent.index');
+  Route::POST('/absent', [AbsentController::class, 'store'])->name('absent.store');
+
+  //result type
+  Route::GET('/result-type', [ResultTypeController::class, 'index'])->name('result_type.index');
+  Route::POST('/result-type', [ResultTypeController::class, 'store'])->name('result_type.store');
+  //pay type
+  Route::GET('/pay-type', [PayTypeController::class, 'index'])->name('pay_type.index');
+  Route::POST('/pay-type', [PayTypeController::class, 'store'])->name('pay_type.store');
+
+  //status type
+  Route::GET('/emp-status', [EmpStatusController::class, 'index'])->name('emp_status.index');
+  Route::POST('/emp-status', [EmpStatusController::class, 'store'])->name('emp_status.store');
 });
 
  
