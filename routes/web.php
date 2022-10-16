@@ -13,6 +13,7 @@ use App\Http\Controllers\PayTypeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ResultTypeController;
 use App\Http\Controllers\SexController;
+use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingCourseController;
 use App\Http\Controllers\TypeExpense;
 use App\Http\Controllers\TypeIncome;
@@ -352,9 +353,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::GET('/emp-status', [EmpStatusController::class, 'index'])->name('emp_status.index');
   Route::POST('/emp-status', [EmpStatusController::class, 'store'])->name('emp_status.store');
 
-    //taininging course
-    Route::GET('/training-course', [TrainingCourseController::class, 'index'])->name('training_course.index');
-    Route::POST('/training-course', [TrainingCourseController::class, 'store'])->name('training_course.store');
+  //taininging course
+  Route::GET('/training-course', [TrainingCourseController::class, 'index'])->name('training_course.index');
+  Route::POST('/training-course', [TrainingCourseController::class, 'store'])->name('training_course.store');
+
+  //taininging course
+  Route::GET('/training', [TrainingController::class, 'index'])->name('training.index');
+  Route::POST('/training', [TrainingController::class, 'store'])->name('training.store');
 });
 
  
