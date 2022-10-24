@@ -3,6 +3,7 @@
 use App\Http\Controllers\AbsentController;
 use App\Http\Controllers\AbsentTypeController;
 use App\Http\Controllers\AssetController;
+use App\Http\Controllers\AttachFileController;
 use App\Http\Controllers\CategController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EmpStatusController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\ResultTypeController;
 use App\Http\Controllers\SexController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\TrainingCourseController;
+use App\Http\Controllers\TypeAttachController;
 use App\Http\Controllers\TypeExpense;
 use App\Http\Controllers\TypeIncome;
 use Illuminate\Support\Facades\Route;
@@ -360,6 +362,15 @@ Route::group(['middleware' => 'auth'], function () {
   //taininging course
   Route::GET('/training', [TrainingController::class, 'index'])->name('training.index');
   Route::POST('/training', [TrainingController::class, 'store'])->name('training.store');
+
+  
+  //attach type
+  Route::GET('/type-attach', [TypeAttachController::class, 'index'])->name('attach_type.index');
+  Route::POST('/type-attach', [TypeAttachController::class, 'store'])->name('attach_type.store');
+    
+  //attach file
+  Route::GET('/attach-file', [AttachFileController::class, 'index'])->name('attach_file.index');
+  Route::POST('/attach-file', [AttachFileController::class, 'store'])->name('attach_file.store');
 });
 
  

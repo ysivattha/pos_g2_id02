@@ -272,6 +272,13 @@
                                        Type Expense {{-- {{__('lb.roles')}} --}}
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('income_type.index') }}" class="nav-link" id='menu_type_expense'>
+                                        <i class="fas fa-angle-double-right nav-icon ml-3"></i> 
+                                       Type Income {{-- {{__('lb.roles')}} --}}
+                                    </a>
+                                </li>
                                 
 
                                 <li class="nav-item">
